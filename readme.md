@@ -1,7 +1,3 @@
-# Git Commands
+# Kosmata Sreča Central app
 
-git init - Create a new git repo
-git status - View the changes to your project code
-git add - Add files to staging area
-git commit - Creates a new commit with files from staging area
-git log - View recent commits
+So I decided to digitalize a lot of proceses that were managed by hand.

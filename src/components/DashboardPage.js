@@ -1,8 +1,8 @@
 import React from 'react';
 
 const DashboardPage = () => (
-  <div>
-    Dashboard page content
+  <div className="content-container">
+    <h1>Dashboard</h1>
   </div>
 );
 

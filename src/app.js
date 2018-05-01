@@ -10,6 +10,7 @@ import LoadingPage from './components/LoadingPage';
 import configureStore from './store/configureStore';
 import { login, logout } from "./actions/auth";
 import { startSetCustomers } from './actions/customers';
+import { startSetPets } from './actions/pets';
 
 const store = configureStore();
 
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetCustomers());
+    store.dispatch(startSetPets());
     renderApp();
     if (history.location.pathname === '/') {
       history.push('dashboard');

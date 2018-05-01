@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from '../../actions/filters';
 
-export class CustomerListFilters extends React.Component {
+export class PetListFilters extends React.Component {
   onTextChange = (e) => {
     this.props.setTextFilter(e.target.value);
   }
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text))
 });
 
-export default connect(undefined, mapDispatchToProps)(CustomerListFilters);
+export default connect(undefined, mapDispatchToProps)(PetListFilters);

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const MainMenu = () => (
   <div className="content-container">
-    <Link to="/customers">Stranke</Link>
+    <div><Link to="/customers">Stranke</Link></div>
+    <div><Link to="/pets">Varovanci</Link></div>
   </div>
 );
 

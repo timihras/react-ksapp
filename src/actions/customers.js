@@ -60,11 +60,6 @@ export const startDeactivateCustomer = (id, reason = 'Deleted') => {
           })
         });
     });
-    // database.collection('obsolete_customers').doc(doc.id).set()
-    // console.log(doc);
-    // console.log('id', doc.id);
-    // console.log('get', doc.get().toObject());
-    // database.collection('obsolete_customers').add(database.collection('customers').doc(id));
   };
 };
 

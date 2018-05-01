@@ -13,6 +13,10 @@ import CustomersDashboardPage from '../components/customers/CustomersDashboardPa
 import CustomerAddPage from '../components/customers/CustomerAddPage';
 import CustomerEditPage from '../components/customers/CustomerEditPage';
 
+import PetsDashboardPage from '../components/pets/PetsDashboardPage';
+import PetEditPage from '../components/pets/PetEditPage';
+import PetAddPage from '../components/pets/PetAddPage';
+
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -24,6 +28,9 @@ const AppRouter = () => (
         <PrivateRoute path="/customers" component={CustomersDashboardPage} />
         <PrivateRoute path="/customer/add" component={CustomerAddPage} />
         <PrivateRoute path="/customer/:id" component={CustomerEditPage} />
+        <PrivateRoute path="/pets" component={PetsDashboardPage} />
+        <PrivateRoute path="/pet/add" component={PetAddPage} />
+        <PrivateRoute path="/pet/:id" component={PetEditPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

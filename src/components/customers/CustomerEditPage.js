@@ -15,9 +15,17 @@ export class CustomerEditPage extends React.Component {
   render() {
     return (
       <div>
-        <CustomerForm customer={this.props.customer} onSubmit={this.onSubmit} />
-        <button className="button button--secondary" onClick={this.onDisable}>Remove</button>
+        <div className="page-header">
+          <div className="content-container">
+            <h1 className="page-header__title">Uredi stranko</h1>
+          </div>
+        </div>
+        <div className="content-container">
+          <CustomerForm customer={this.props.customer} onSubmit={this.onSubmit} />
+          <button className="button button--secondary" onClick={this.onDisable}>Odstrani</button>
+        </div>
       </div>
+
     );
   };
 };

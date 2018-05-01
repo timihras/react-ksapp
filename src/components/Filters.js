@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from '../../actions/filters';
+import { setTextFilter } from '../actions/filters';
 
 export class CustomerListFilters extends React.Component {
   onTextChange = (e) => {
@@ -9,13 +9,18 @@ export class CustomerListFilters extends React.Component {
   render() {
     this.props.setTextFilter();
     return (
-      <div>
-        <input
-          type="text"
-          name="search"
-          placeholder="Iskanje po zapisih"
-          onChange={this.onTextChange}
-        />
+      <div className="content-container">
+        <div className="input-group">
+          <div className="input-group__item">
+            <input
+              type="text"
+              className="text-input"
+              name="search"
+              placeholder="Iskanje po zapisih"
+              onChange={this.onTextChange}
+            />
+          </div>
+        </div>
       </div>
     );
   };

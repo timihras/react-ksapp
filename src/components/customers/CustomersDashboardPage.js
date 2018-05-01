@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Filters from '../Filters';
 import CustomerList from './CustomerList';
-import CustomerListFilters from './CustomerListFilters';
+import CustomerSummary from './CustomerSummary';
 
 const CustomersDashboardPage = () => (
-  <div className="content-container">
-    <Link className="button" to="/customer/add">Dodaj stranko</Link>
-    <CustomerListFilters />
+  <div>
+    <CustomerSummary />
+    <Filters />
     <CustomerList />
   </div>
 );

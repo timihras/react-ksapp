@@ -1,9 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const PetListItem = ({id, name, breed}) => {
+const PetListItem = ({ id, name, breed }) => {
   return (
-    <div>
+    <div className="content-container">
       <Link to={`/pet/${id}`}>{name}, {breed}</Link>
     </div>
   )

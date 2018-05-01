@@ -56,8 +56,9 @@ export default class PetForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <select
+          className="select"
           value={this.state.type}
           onChange={this.onTypeChange}
         >
@@ -67,30 +68,35 @@ export default class PetForm extends Component {
         </select>
         <input
           type="text"
+          className="text-input"
           placeholder="Ime"
           value={this.state.name}
           onChange={this.onNameChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Pasma"
           value={this.state.breed}
           onChange={this.onBreedChange}
         />
         <input
           type="number"
+          className="text-input"
           placeholder="Leto rojstva"
           value={this.state.birth}
           onChange={this.onBirthChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Lastnik"
           value={this.state.owner}
           onChange={this.onOwnerChange}
         />
-        <button type="submit">{this.state.edit ? 'Uredi' : 'Dodaj'}</button>
-
+        <div>
+          <button className="button" type="submit">{this.state.edit ? 'Uredi' : 'Dodaj'}</button>
+        </div>
         {this.state.error && <p>{this.state.error}</p>}
       </form>
     )

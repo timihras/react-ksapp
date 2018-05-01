@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogout } from '../actions/auth'
+import { startLogout } from '../actions/auth';
 
 export const Header = ({ startLogout }) => (
   <header className="header">
@@ -10,7 +10,11 @@ export const Header = ({ startLogout }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Kosmata Sreča</h1>
         </Link>
-        <button className="button button--link" onClick={startLogout}>Logout</button>
+        <div>
+          <Link className="button button--link" to="/customers">Stranke</Link>
+          <Link className="button button--link" to="/pets">Varovanci</Link>
+          <button className="button button--link" onClick={startLogout}>Odjavi</button>
+        </div>
       </div>
     </div>
   </header>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PetForm from './PetForm';
-import {startAddPet} from '../../actions/pets';
+import { startAddPet } from '../../actions/pets';
 
 export class PetAddPage extends Component {
   onSubmit = (pet) => {
@@ -11,9 +11,15 @@ export class PetAddPage extends Component {
   };
   render() {
     return (
-      <div className="content-container">
-        <h1>Dodaj novega ljubljenčka</h1>
-        <PetForm onSubmit={this.onSubmit} />
+      <div>
+        <div className="page-header">
+          <div className="content-container">
+            <h1 className="page-header__title">Dodaj ljubljenčka</h1>
+          </div>
+        </div>
+        <div className="content-container">
+          <PetForm onSubmit={this.onSubmit} />
+        </div>
       </div>
     );
   };

@@ -65,9 +65,10 @@ export default class CustomerForm extends React.Component {
   };
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
           type="text"
+          className="text-input"
           placeholder="Ime"
           value={this.state.firstName}
           onChange={this.onFirstNameChange}
@@ -75,41 +76,49 @@ export default class CustomerForm extends React.Component {
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Priimek"
           value={this.state.lastName}
           onChange={this.onLastNameChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Naslov"
           value={this.state.address}
           onChange={this.onAddressChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Pošta"
           value={this.state.post}
           onChange={this.onPostChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Mesto"
           value={this.state.city}
           onChange={this.onCityChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Telefonska št."
           value={this.state.phoneNumber}
           onChange={this.onPhoneNumberChange}
         />
         <input
           type="text"
+          className="text-input"
           placeholder="Email"
           value={this.state.email}
           onChange={this.onEmailChange}
         />
-        <button type="submit" className="button">{this.state.edit ? "Uredi" : "Dodaj"}</button>
+        <div>
+          <button type="submit" className="button">{this.state.edit ? "Uredi" : "Dodaj"}</button>
+        </div>
 
         {this.state.error && <p className="form__error">{this.state.error}</p>}
       </form>

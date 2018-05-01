@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import Filters from '../Filters';
 import PetList from './PetList';
-import PetFilters from './PetFilters';
+import PetSummary from './PetSummary';
 
 const PetsDashboardPage = () => (
-  <div className="content-container">
-    <Link className="button" to="/pet/add">Dodaj varovanca</Link>
-    <PetFilters />
+  <div>
+    <PetSummary />
+    <Filters />
     <PetList />
   </div>
 );

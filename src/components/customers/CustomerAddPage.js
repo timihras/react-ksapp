@@ -11,10 +11,12 @@ export class CustomerAddPage extends React.Component {
   render() {
     return (
       <div>
-        <div className="content-container">
-          <h1>Dodaj stranko</h1>
+        <div className="page-header">
+          <div className="content-container">
+            <h1 className="page-header__title">Dodaj stranko</h1>
+          </div>
         </div>
-        <div>
+        <div className="content-container">
           <CustomerForm onSubmit={this.onSubmit} />
         </div>
       </div>

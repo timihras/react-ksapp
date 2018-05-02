@@ -1,0 +1,11 @@
+.profile {
+    display: flex;
+}
+
+.profile>* {
+    padding: $m-size
+}
+
+.profile-details {
+    border-left: 1px solid $off-white;
+}

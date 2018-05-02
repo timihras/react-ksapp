@@ -26,7 +26,7 @@ export const editPet = (id, updates) => ({
 
 export const startEditPet = (id, updates) => {
   return (dispatch) => {
-    return database.collection('pet').doc(id).set(updates,{merge: true}).then(() => {
+    return database.collection('pets').doc(id).set(updates, { merge: true }).then(() => {
       dispatch(editPet(id, updates));
     });
   };
@@ -43,11 +43,11 @@ export const startDeactivatePet = (id, reason = 'Deleted') => {
     const petRef = database.collection('pets').doc(id);
     return petRef.get().then((ref) => {
       database.collection('obsolete_pets').doc(ref.id)
-      .set({reason, ...ref.data()}, { merge: true }).then(() => {
-        petRef.delete().then(() => {
-          dispatch(deactivatePet(id));
+        .set({ reason, ...ref.data() }, { merge: true }).then(() => {
+          petRef.delete().then(() => {
+            dispatch(deactivatePet(id));
+          });
         });
-      });
     });
   }
 }

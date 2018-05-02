@@ -6,8 +6,12 @@ export class CustomerListFilters extends React.Component {
   onTextChange = (e) => {
     this.props.setTextFilter(e.target.value);
   }
-  render() {
+
+  componentWillMount() {
     this.props.setTextFilter();
+  }
+
+  render() {
     return (
       <div className="content-container">
         <div className="input-group">

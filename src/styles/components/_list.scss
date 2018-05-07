@@ -2,9 +2,20 @@
     background: $off-white;
     border: 1px solid darken($off-white, 7%);
     color: $grey;
+    font-size: $font-size-small;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     padding: $s-size $m-size;
+    text-transform: uppercase;
+    &>* {
+        flex-basis: 0;
+        flex-grow: 10;
+    }
+    &>:last-child {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
 }
 
 .list-body {
@@ -32,6 +43,10 @@
         justify-content: space-between;
         padding: $m-size;
     }
+    &>* {
+        flex-basis: 0;
+        flex-grow: 10;
+    }
 }
 
 .list-item--message {
@@ -44,20 +59,28 @@
     }
 }
 
-.list-item__title {
+.list-item__name {
     margin: 0;
     word-break: break-all;
 }
 
-.list-item__subtitle {
-    color: $grey;
-    font-size: $font-size-small;
-}
-
 .list-item__data {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin: $s-size 0 0 0;
     @media (min-width: $desktop-breakpoint) {
         margin: 0;
         padding-left: $s-size;
     }
+    &>* {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}
+
+.list-item__actions {
+    margin: 0;
+    word-break: break-all;
+    flex-grow: 1;
 }

@@ -18,7 +18,7 @@ export const startAddCustomer = (customerData = {}) => {
       email = ''
     } = customerData;
     const customer = { firstName, lastName, address, post, city, phoneNumber, email }
-    database.collection('customers').add(customerData).then((ref) => {
+    return database.collection('customers').add(customerData).then((ref) => {
       dispatch(addCustomer({
         id: ref.id,
         ...customer
@@ -52,7 +52,7 @@ export const deactivateCustomer = (id) => ({
 export const startDeactivateCustomer = (id, reason = 'Deleted') => {
   return (dispatch) => {
     const customerRef = database.collection('customers').doc(id);
-    customerRef.get().then((ref) => {
+    return customerRef.get().then((ref) => {
       database.collection('obsolete_customers').doc(ref.id)
         .set({ reason, ...ref.data() }, { merge: true }).then(() => {
           customerRef.delete().then(() => {

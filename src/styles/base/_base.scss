@@ -7,9 +7,10 @@ html {
 }
 
 body {
+    background: $off-white;
     color: $dark-grey;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: $m-size;
+    font-size: $s-size;
     line-height: 1.6;
     margin-bottom: $xl-size;
 }

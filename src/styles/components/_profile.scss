@@ -9,3 +9,23 @@
 .profile-details {
     border-left: 1px solid $off-white;
 }
+
+.list__initials {
+    &:first-letter {
+        color: white;
+        font-size: 16px;
+    }
+    margin-right: 12px;
+    font-size: 0;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background: $accent;
+    border-radius: 100px;
+}
+
+.list__email {
+    color: $grey;
+    font-style: italic;
+}

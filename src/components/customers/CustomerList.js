@@ -6,25 +6,26 @@ import CustomerListItem from './CustomerListItem';
 
 const CustomerList = (props) => (
   <div className="content-container">
-    <div className="list-header">
-      <div className="show-for-desktop">Info</div>
-      <div className="show-for-desktop">Naslov</div>
-      <div className="show-for-desktop">Telefon</div>
-      <div className="show-for-desktop"></div>
+    <div className="table">
+      <div className="table__row table__row--header">
+        <div className="table__cell">Info</div>
+        <div className="table__cell">Naslov</div>
+        <div className="table__cell">Telefon</div>
+        <div className="table__cell table__cell--small"></div>
+      </div>
+      <div>
+        {props.customers.length === 0 ? (
+          <div>
+            <span>V bazi ni nobene stranke</span>
+          </div>
+        ) : (
+            props.customers.map((customer) => {
+              return (<CustomerListItem key={customer.id} {...customer} />)
+            })
+          )}
+      </div>
     </div>
-    <div className="list-body">
-      {props.customers.length === 0 ? (
-        <div>
-          <span>V bazi ni nobene stranke</span>
-        </div>
-      ) : (
-          props.customers.map((customer) => {
-            return (<CustomerListItem key={customer.id} {...customer} />)
-          })
-        )}
-    </div>
-
-  </div >
+  </div>
 );
 
 const mapStateToProps = (state) => ({

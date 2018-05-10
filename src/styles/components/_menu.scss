@@ -1,27 +1,25 @@
 .menu {
     background: white;
     border: 1px solid $off-white;
-    border-radius: 6px; // display: none;
+    border-radius: 6px;
     margin: 0;
     padding: $m-size $l-size;
     position: absolute;
-    opacity: 0;
+    text-align: left;
     transition: all 0.3s ease-in-out;
+    z-index: 5;
 }
 
-.menu-root:hover {
-    .menu {
-        // display: block;
-        opacity: 1;
-    }
+.menu>* {
+    display: block;
 }
 
 .menu__item {
-    font-size: $font-size-small;
-    list-style: none;
     margin-bottom: $xs-size;
-    a {
-        color: $dark-grey;
-        text-decoration: none;
+    color: $dark-grey;
+    text-decoration: none;
+    .fas {
+        width: 24px;
+        text-align: center;
     }
 }

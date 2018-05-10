@@ -19,9 +19,7 @@ const CustomerList = (props) => (
             <span>V bazi ni nobene stranke</span>
           </div>
         ) : (
-            props.customers.map((customer) => {
-              return (<CustomerListItem key={customer.id} {...customer} />)
-            })
+            props.customers.map((customer) => <CustomerListItem key={customer.id} {...customer} />)
           )}
       </div>
     </div>

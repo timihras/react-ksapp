@@ -25,6 +25,17 @@
     border-radius: 100px;
 }
 
+.list__icon {
+    background: $accent;
+    border-radius: 100px;
+    color: white;
+    height: 36px;
+    line-height: 36px;
+    margin-right: 12px;
+    text-align: center;
+    width: 36px;
+}
+
 .list__email {
     color: $grey;
     font-style: italic;

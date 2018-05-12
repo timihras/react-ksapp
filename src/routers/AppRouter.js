@@ -19,6 +19,7 @@ import PetsDashboardPage from '../components/pets/PetsDashboardPage';
 import PetEditPage from '../components/pets/PetEditPage';
 import PetAddPage from '../components/pets/PetAddPage';
 import PetProfilePage from '../components/pets/PetProfilePage';
+import PetNotesAdd from '../components/pets/PetNotesAdd';
 
 export const history = createHistory();
 
@@ -37,6 +38,7 @@ const AppRouter = () => (
 
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
         <PrivateRoute path="/pet/add" component={PetAddPage} />
+        <PrivateRoute path="/pet/note-add" component={PetNotesAdd} />
         <PrivateRoute path="/pet/:id" component={PetProfilePage} />
         <PrivateRoute path="/edit-pet/:id" component={PetEditPage} />
         <Route component={NotFoundPage} />

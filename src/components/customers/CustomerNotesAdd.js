@@ -5,15 +5,12 @@ import { startEditCustomer } from '../../actions/customers';
 
 class CustomerNotesAdd extends Component {
   onSubmit = (note) => {
-    console.log(this.props);
     const notes = this.props.customer.notes ? this.props.customer.notes : [];
     notes.push(note);
     this.props.startEditCustomer(this.props.customer.id, { notes });
     this.props.history.goBack();
   }
   render() {
-
-    console.log(this.props);
     return (
       <div>
         <div className="page-header">

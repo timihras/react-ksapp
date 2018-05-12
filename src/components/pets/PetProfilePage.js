@@ -5,6 +5,7 @@ import Autosuggest from 'react-autosuggest';
 import { startEditPet } from '../../actions/pets';
 import petSelector from '../../selectors/petDetails';
 import ownerSelector from '../../selectors/owners';
+import PetNotesList from './PetNotesList';
 
 export class PetProfilePage extends React.Component {
   constructor(props) {
@@ -74,7 +75,7 @@ export class PetProfilePage extends React.Component {
 
   render() {
     const { value, suggestions } = this.state;
-
+    const { goBack } = this.props.history;
     const inputProps = {
       placeholder: 'Iskanje lastnikov',
       value,
@@ -89,7 +90,7 @@ export class PetProfilePage extends React.Component {
               <div className="content-container">
                 <h1 className="page-header__title">{this.props.pet.name}</h1>
                 <div className="page-header__actions">
-                  <Link className="button" to="/pets">Nazaj</Link>
+                  <button className="button" onClick={goBack}>Nazaj</button>
                   <Link className="button button--secondary" to={`/edit-pet/${this.props.pet.id}`}>Uredi</Link>
                 </div>
               </div>
@@ -139,10 +140,7 @@ export class PetProfilePage extends React.Component {
                   )}
               </div>
 
-              <div className="profile-notes">
-                <h2>Opombe</h2>
-
-              </div>
+              <PetNotesList notes={this.props.pet.notes} id={this.props.pet.id} />
 
             </div>
           </div>

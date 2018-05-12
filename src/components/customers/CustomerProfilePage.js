@@ -8,13 +8,14 @@ class CustomerProfilePage extends React.Component {
   render() {
     const customer = this.props.customer || {};
     const ownPets = this.props.ownPets || [];
+    const { goBack } = this.props.history;
     return (
       <div>
         <div className="page-header">
           <div className="content-container">
             <h1 className="page-header__title">{customer.firstName} {customer.lastName}</h1>
             <div className="page-header__actions">
-              <Link className="button" to="/customers">Nazaj</Link>
+              <button className="button" onClick={goBack}>Nazaj</button>
               <Link className="button button--secondary" to={`/edit-customer/${customer.id}`}>Uredi</Link>
             </div>
           </div>

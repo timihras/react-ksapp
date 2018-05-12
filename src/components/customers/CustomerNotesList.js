@@ -1,32 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import { startEditCustomer } from '../../actions/customers';
 import CustomerNotesListItem from './CustomerNotesListItem';
 
-const CustomerNotesList = (props) => {
-
-  const paramsTo = {
-    pathname: "/customer/note-add/",
-    state: {
-      id: props.customer.id
-    }
+class CustomerNotesList extends React.Component {
+  onDelete = (id) => {
+    const notes = this.props.customer.notes.filter((note) => note.created !== id);
+    this.props.startEditCustomer(this.props.customer.id, { notes });
   };
 
-  console.log('test', paramsTo);
-
-  return (
-    <div className="notes">
-      <h2>Opombe</h2>
-      <Link to={paramsTo}> Dodaj opombo</Link>
-      {
-        props.customer.notes ? (
-          props.customer.notes.map((note) => <CustomerNotesListItem key={note.created} {...note} />)
-        ) : (
-            <p>Ni opomb</p>
-          )
+  render() {
+    const paramsTo = {
+      pathname: "/customer/note-add/",
+      state: {
+        id: this.props.customer.id
       }
-    </div>
-  )
+    };
+
+    return (
+      <div className="notes">
+        <h2>Opombe</h2>
+        {
+          this.props.customer.notes && this.props.customer.notes.length !== 0 ? (
+            this.props.customer.notes.map((note) =>
+              <CustomerNotesListItem
+                key={note.created}
+                {...note}
+                onDelete={this.onDelete}
+              />)
+          ) : (
+              <p>Ni opomb</p>
+            )
+        }
+        <Link to={paramsTo}> Dodaj opombo</Link>
+      </div>
+    );
+  };
 };
 
-export default CustomerNotesList;
+const mapDispatchToProps = (dispatch) => ({
+  startEditCustomer: (id, updates) => dispatch(startEditCustomer(id, updates))
+});
+
+export default connect(undefined, mapDispatchToProps)(CustomerNotesList);

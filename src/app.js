@@ -32,7 +32,7 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(login(user.uid, user.displayName));
+    store.dispatch(login(user.uid, user.displayName, user.photoURL));
     store.dispatch(startSetCustomers());
     store.dispatch(startSetPets());
     renderApp();

@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { startEditPet } from '../../actions/pets';
-import PetNotesListItem from './PetNotesListItem';
+import NotesListItem from '../NotesListItem';
 
 class PetNotesList extends React.Component {
   onDelete = (id) => {
     const notes = this.props.notes.filter((note) => note.created !== id);
     this.props.startEditPet(this.props.id, { notes });
   };
+
   render() {
     const paramsTo = {
       pathname: '/pet/note-add',
@@ -21,7 +22,7 @@ class PetNotesList extends React.Component {
         <h2>Opombe</h2>
         {this.props.notes && this.props.notes.length !== 0 ? (
           this.props.notes.map((note) =>
-            <PetNotesListItem
+            <NotesListItem
               key={note.created}
               {...note}
               onDelete={this.onDelete}

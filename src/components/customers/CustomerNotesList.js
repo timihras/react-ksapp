@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { startEditCustomer } from '../../actions/customers';
-import CustomerNotesListItem from './CustomerNotesListItem';
+import NotesListItem from '../NotesListItem';
 
 class CustomerNotesList extends React.Component {
   onDelete = (id) => {
@@ -18,14 +17,13 @@ class CustomerNotesList extends React.Component {
         id: this.props.customer.id
       }
     };
-
     return (
       <div className="notes">
         <h2>Opombe</h2>
         {
           this.props.customer.notes && this.props.customer.notes.length !== 0 ? (
             this.props.customer.notes.map((note) =>
-              <CustomerNotesListItem
+              <NotesListItem
                 key={note.created}
                 {...note}
                 onDelete={this.onDelete}

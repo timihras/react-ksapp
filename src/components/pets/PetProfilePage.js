@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
+import { startEditPet } from '../../actions/pets';
 import petSelector from '../../selectors/petDetails';
 import ownerSelector from '../../selectors/owners';
 
@@ -11,7 +12,7 @@ export class PetProfilePage extends React.Component {
     this.state = {
       value: '',
       suggestions: [],
-      id: '',
+      ownerId: '',
       editOwner: false
     };
   };
@@ -42,7 +43,7 @@ export class PetProfilePage extends React.Component {
 
   onSuggestionSelected = (event, { suggestion }) => {
     this.setState(() => ({
-      id: suggestion.id
+      ownerId: suggestion.id
     }))
   }
 
@@ -65,6 +66,7 @@ export class PetProfilePage extends React.Component {
   }
 
   onSaveOwner = () => {
+    this.props.startEditPet(this.props.pet.id, { owner: this.state.ownerId });
     this.setState(() => ({
       editOwner: false
     }))
@@ -102,9 +104,9 @@ export class PetProfilePage extends React.Component {
                   <p>Leto rojstva: <br /><span>{this.props.pet.birth}</span></p>
                 </div>
               </div>
+
               <div className="profile-details">
                 <h2>Lastnik</h2>
-
                 {this.props.pet.ownerFullName && !this.state.editOwner ? (
                   <div>
                     <Link to={`/customer/${this.props.pet.owner}`}>{this.props.pet.ownerFullName}</Link>
@@ -135,8 +137,13 @@ export class PetProfilePage extends React.Component {
                       }
                     </div>
                   )}
+              </div>
+
+              <div className="profile-notes">
+                <h2>Opombe</h2>
 
               </div>
+
             </div>
           </div>
         ) : (
@@ -152,4 +159,8 @@ const mapStateToProps = (state, props) => ({
   owners: ownerSelector(state.customers)
 });
 
-export default connect(mapStateToProps)(PetProfilePage);
+const mapDispatchToProps = (dispatch) => ({
+  startEditPet: (id, updates) => dispatch(startEditPet(id, updates))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PetProfilePage);

@@ -29,7 +29,7 @@ class CustomerProfilePage extends React.Component {
             </div>
           </div>
           <div className="profile-details">
-            <CustomerNotesList notes={customer.notes} />
+            <CustomerNotesList customer={customer} />
             <div className="pets">
               <h2>Lastnik:</h2>
               {ownPets.length === 0 ? (

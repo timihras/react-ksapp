@@ -31,9 +31,9 @@ const AppRouter = () => (
 
         <PrivateRoute path="/customers" component={CustomersDashboardPage} />
         <PrivateRoute path="/customer/add" component={CustomerAddPage} />
+        <PrivateRoute path="/customer/note-add" component={CustomerNotesAdd} />
         <PrivateRoute path="/customer/:id" component={CustomerProfilePage} />
         <PrivateRoute path="/edit-customer/:id" component={CustomerEditPage} />
-        <PrivateRoute path="/add-note" component={CustomerNotesAdd} />
 
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
         <PrivateRoute path="/pet/add" component={PetAddPage} />

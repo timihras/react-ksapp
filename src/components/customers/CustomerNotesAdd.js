@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import NotesForm from '../NotesForm';
+import { startEditCustomer } from '../../actions/customers';
 
 class CustomerNotesAdd extends Component {
   onSubmit = (note) => {
-    console.log('note submitted', note);
-    this.props.navigation.goBack();
+    console.log(this.props);
+    const notes = this.props.customer.notes ? this.props.customer.notes : [];
+    notes.push(note);
+    this.props.startEditCustomer(this.props.customer.id, { notes });
+    this.props.history.goBack();
   }
   render() {
+
+    console.log(this.props);
     return (
       <div>
         <div className="page-header">
@@ -22,4 +29,12 @@ class CustomerNotesAdd extends Component {
   }
 }
 
-export default CustomerNotesAdd;
+const mapStateToProps = (state, props) => ({
+  customer: state.customers.find((customer) => customer.id === props.location.state.id)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  startEditCustomer: (id, updates) => dispatch(startEditCustomer(id, updates))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerNotesAdd);

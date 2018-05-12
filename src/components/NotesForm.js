@@ -1,13 +1,15 @@
 import React from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
-export default class NotesForm extends React.Component {
+class NotesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       text: '',
       created: moment(),
-      author: 'Timi Hraš'
+      author: 'Timi Hraš',
+      error: undefined
     };
   };
   onTextChange = (e) => {
@@ -23,7 +25,7 @@ export default class NotesForm extends React.Component {
       this.setState(() => ({ error: undefined, created: moment() }));
       this.props.onSubmit({
         text: this.state.text,
-        created: this.state.created,
+        created: this.state.created.valueOf(),
         author: this.state.author
       });
     }
@@ -43,3 +45,5 @@ export default class NotesForm extends React.Component {
     );
   };
 };
+
+export default NotesForm;

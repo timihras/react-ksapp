@@ -34,10 +34,11 @@ export class PetProfilePage extends React.Component {
   );
 
   onChange = (event, { newValue }) => {
-    this.setState({
+    this.setState(() => ({
       value: newValue
-    });
+    }));
   };
+
 
   onSuggestionSelected = (event, { suggestion }) => {
     this.setState(() => ({
@@ -46,16 +47,28 @@ export class PetProfilePage extends React.Component {
   }
 
   onSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
+    this.setState(() => ({
       suggestions: this.getSuggestions(value)
-    });
+    }));
   };
 
   onSuggestionsClearRequested = () => {
-    this.setState({
+    this.setState(() => {
       suggestions: []
     });
   };
+
+  onEditOwner = () => {
+    this.setState(() => ({
+      editOwner: true
+    }))
+  }
+
+  onSaveOwner = () => {
+    this.setState(() => ({
+      editOwner: false
+    }))
+  }
 
   render() {
     const { value, suggestions } = this.state;
@@ -92,10 +105,10 @@ export class PetProfilePage extends React.Component {
               <div className="profile-details">
                 <h2>Lastnik</h2>
 
-                {this.props.pet.ownerFullName ? (
+                {this.props.pet.ownerFullName && !this.state.editOwner ? (
                   <div>
                     <Link to={`/customer/${this.props.pet.owner}`}>{this.props.pet.ownerFullName}</Link>
-                    <button>Spremeni</button>
+                    <button onClick={this.onEditOwner}>Spremeni</button>
                   </div>
                 ) : (
                     <div>
@@ -111,7 +124,12 @@ export class PetProfilePage extends React.Component {
                       />
                       {
                         this.state.value ?
-                          <button className="button">Shrani</button>
+                          <button
+                            className="button"
+                            onClick={this.onSaveOwner}
+                          >
+                            Shrani
+                            </button>
                           :
                           undefined
                       }

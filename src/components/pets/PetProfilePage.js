@@ -87,12 +87,16 @@ export class PetProfilePage extends React.Component {
         {this.props.pet ? (
           <div>
             <div className="page-header">
-              <div className="content-container">
-                <h1 className="page-header__title">{this.props.pet.name}</h1>
-                <div className="page-header__actions">
-                  <button className="button" onClick={goBack}>Nazaj</button>
-                  <Link className="button button--secondary" to={`/edit-pet/${this.props.pet.id}`}>Uredi</Link>
-                </div>
+              <div className="page-header__title">
+                <button className="button" onClick={goBack}>
+                  <i className="fas fa-angle-left"></i> Nazaj
+                </button>
+                <h1>{this.props.pet.name}</h1>
+              </div>
+              <div className="page-header__actions">
+                <Link className="button button--secondary" to={`/edit-pet/${this.props.pet.id}`}>
+                  <i className="far fa-edit"></i> Uredi
+                </Link>
               </div>
             </div>
             <div className="content-container profile">
@@ -110,7 +114,7 @@ export class PetProfilePage extends React.Component {
                 <h2>Lastnik</h2>
                 {this.props.pet.ownerFullName && !this.state.editOwner ? (
                   <div>
-                    <Link to={`/customer/${this.props.pet.owner}`}>{this.props.pet.ownerFullName}</Link>
+                    <Link to={`/customers/${this.props.pet.owner}`}>{this.props.pet.ownerFullName}</Link>
                     <button onClick={this.onEditOwner}>Spremeni</button>
                   </div>
                 ) : (

@@ -17,14 +17,17 @@ export class PetEditPage extends Component {
     return (
       <div>
         <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Uredi ljubljenčka</h1>
+          <h1 className="page-header__title">Uredi ljubljenčka</h1>
+          <div className="page-header__actions">
+            <button className="button button--secondary" onClick={this.onDeactivate}>
+              <i className="far fa-trash-alt"></i> Odstrani
+            </button>
           </div>
         </div>
         <div className="content-container">
 
           <PetForm pet={this.props.pet} onSubmit={this.onSubmit} />
-          <button className="button button--secondary" onClick={this.onDeactivate}>Odstrani</button>
+
         </div>
       </div>
     );

@@ -1,17 +1,18 @@
 .page-header {
-    background-color: $off-white;
-    margin-bottom: $l-size;
+    align-content: center;
+    display: flex;
+    justify-content: space-between;
     padding: $l-size 0;
 }
 
 .page-header__actions {
-    margin-top: $m-size;
+    // margin-top: $m-size;
 }
 
 .page-header__title {
-    font-weight: 300;
+    font-weight: 400;
     margin: 0;
     span {
-        font-weight: 700;
+        font-weight: 600;
     }
 }

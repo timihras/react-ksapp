@@ -12,7 +12,7 @@ class PetNotesList extends React.Component {
 
   render() {
     const paramsTo = {
-      pathname: '/pet/note-add',
+      pathname: '/pets/note-add',
       state: {
         id: this.props.id
       }

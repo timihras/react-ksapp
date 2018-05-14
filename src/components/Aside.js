@@ -1,23 +1,11 @@
 import React from 'react';
+import Modal from 'react-modal';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
+import NewItemModal from './newItem/NewItemModal';
 
 export const Aside = ({ auth, startLogout }) => (
-  // <header className="header">
-  //   <div className="content-container">
-  //     <div className="header__content">
-  //       <Link className="header__title" to="/dashboard">
-  //         <h1>Kosmata Sreča</h1>
-  //       </Link>
-  //       <div>
-  //         <Link className="button button--link" to="/customers">Stranke</Link>
-  //         <Link className="button button--link" to="/pets">Varovanci</Link>
-  //         <button className="button button--link" onClick={startLogout}>Odjavi</button>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </header>
 
   <aside>
     <img src="/images/logo.png" className="aside__logo" />
@@ -26,15 +14,27 @@ export const Aside = ({ auth, startLogout }) => (
       {auth.displayName}
     </div>
     <nav className="aside__nav">
+
+      <NewItemModal />
+
       <NavLink to="/pets" activeClassName='nav-active'>
         <i className="far fa-heart"></i> Varovanci
-      </NavLink>
+        </NavLink>
       <NavLink to="/customers" activeClassName='nav-active'>
         <i className="far fa-user"></i> Stranke
         </NavLink>
-      <a className="button button--link" onClick={startLogout}>Odjavi</a>
+      <NavLink to="/calendar" activeClassName='nav-active'>
+        <i className="far fa-calendar-alt"></i> Koledar obiskov
+        </NavLink>
+      <NavLink to="/profile" activeClassName='nav-active'>
+        <i className="far fa-user-circle"></i> Moj račun
+        </NavLink>
+      <button className="button button__nav button__nav--link" onClick={startLogout}>
+        <i className="fas fa-sign-out-alt"></i> Odjavi
+        </button>
     </nav>
   </aside>
+
 );
 
 const mapStateToProps = (state) => ({

@@ -12,7 +12,7 @@ class CustomerNotesList extends React.Component {
 
   render() {
     const paramsTo = {
-      pathname: "/customer/note-add/",
+      pathname: "/customers/note-add/",
       state: {
         id: this.props.customer.id
       }

@@ -23,7 +23,7 @@ const CustomerListItem = ({ id, firstName, lastName, address, post, city, phoneN
   // </div>
 
   <div className="table__row">
-    <Link to={`/customer/${id}`} className="table__cell table__cell--info">
+    <Link to={`/customers/${id}`} className="table__cell table__cell--info">
       <div className="list__initials">{firstName}</div>
       <div>
         <div>{lastName} {firstName}</div>

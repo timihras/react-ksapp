@@ -95,7 +95,7 @@ export default class PetForm extends Component {
           onChange={this.onOwnerChange}
         />
         <div>
-          <button className="button" type="submit">{this.state.edit ? 'Shrani' : 'Dodaj'}</button>
+          <button className="button" type="submit"><i className="far fa-save"></i> {this.state.edit ? 'Shrani' : 'Dodaj'}</button>
         </div>
         {this.state.error && <p>{this.state.error}</p>}
       </form>

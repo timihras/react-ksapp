@@ -30,16 +30,16 @@ const AppRouter = () => (
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
 
+        <PrivateRoute path="/customers/:id" component={CustomerProfilePage} />
+        <PrivateRoute path="/customers/add" component={CustomerAddPage} />
+        <PrivateRoute path="/customers/note-add" component={CustomerNotesAdd} />
         <PrivateRoute path="/customers" component={CustomersDashboardPage} />
-        <PrivateRoute path="/customer/add" component={CustomerAddPage} />
-        <PrivateRoute path="/customer/note-add" component={CustomerNotesAdd} />
-        <PrivateRoute path="/customer/:id" component={CustomerProfilePage} />
         <PrivateRoute path="/edit-customer/:id" component={CustomerEditPage} />
 
+        <PrivateRoute path="/pets/add" component={PetAddPage} />
+        <PrivateRoute path="/pets/note-add" component={PetNotesAdd} />
+        <PrivateRoute path="/pets/:id" component={PetProfilePage} />
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
-        <PrivateRoute path="/pet/add" component={PetAddPage} />
-        <PrivateRoute path="/pet/note-add" component={PetNotesAdd} />
-        <PrivateRoute path="/pet/:id" component={PetProfilePage} />
         <PrivateRoute path="/edit-pet/:id" component={PetEditPage} />
         <Route component={NotFoundPage} />
       </Switch>

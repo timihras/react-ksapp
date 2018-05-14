@@ -29,7 +29,7 @@ class PetListItem extends React.Component {
   render() {
     return (
       <div className="table__row">
-        <Link to={`/pet/${this.props.id}`} className="table__cell table__cell--info">
+        <Link to={`/pets/${this.props.id}`} className="table__cell table__cell--info">
           <div className="list__icon"><i className="fas fa-bug"></i></div>
           <div>{this.props.name}</div>
         </Link>
@@ -40,9 +40,9 @@ class PetListItem extends React.Component {
           {
             this.state.showMenu ? (
               <div className="menu">
-                <Link to={`/pet/${this.props.id}`} className="menu__item"><i className="fas fa-info"></i> Več</Link>
+                <Link to={`/pets/${this.props.id}`} className="menu__item"><i className="fas fa-info"></i> Več</Link>
                 <Link to={`/edit-pet/${this.props.id}`} className="menu__item"><i className="fas fa-edit"></i> Uredi</Link>
-                <Link to={`/pet/${this.props.id}`} className="menu__item"><i className="fas fa-trash"></i> Izbriši</Link>
+                <Link to={`/pets/${this.props.id}`} className="menu__item"><i className="fas fa-trash"></i> Izbriši</Link>
               </div>
             ) : (
                 null

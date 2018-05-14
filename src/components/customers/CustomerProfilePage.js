@@ -36,7 +36,7 @@ class CustomerProfilePage extends React.Component {
               {ownPets.length === 0 ? (
                 <p>Ni povezanih ljubljenčkov</p>
               ) : (
-                  ownPets.map((pet) => <div key={pet.id}><Link to={`/pet/${pet.id}`}>{pet.name}</Link></div>)
+                  ownPets.map((pet) => <div key={pet.id}><Link to={`/pets/${pet.id}`}>{pet.name}</Link></div>)
                 )
               }
             </div>

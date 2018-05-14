@@ -15,7 +15,7 @@ aside {
     display: block;
     border: 1px solid $off-white;
     border-radius: 50%;
-    margin: $xxl-size auto 0 auto;
+    margin: 8rem auto 0 auto;
     width: $xxl-size;
 }
 
@@ -25,34 +25,35 @@ aside {
 }
 
 .aside__nav {
-    width: 20rem;
+    width: 24rem;
     margin: auto;
     i {
-        margin: 0 0.6rem;
+        margin: 0 $s-size;
     }
     &>* {
         display: block;
         font-size: $font-size-large;
         text-decoration: none;
         color: $dark-grey;
-        margin: 1.2rem;
-        padding: 1.2rem;
+        margin: $s-size;
+        padding: $s-size;
     }
 }
 
 .nav-active {
     background: $accent;
     border-radius: 10px;
-    color: $white;
+    color: $white !important;
 }
 
 .aside__username {
     text-align: center;
-    margin: 0 0 $xxl-size 0;
+    margin: $s-size 0 8rem 0;
     font-size: $font-size-large;
+    font-weight: 600;
 }
 
 main {
     margin-left: 25rem;
-    padding: $m-size;
+    padding: $l-size;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startEditPet } from '../../actions/pets';
-import NotesForm from '../NotesForm'
+import NotesForm from '../forms/NotesForm'
 
 class PetNotesAdd extends React.Component {
   onSubmit = (note) => {

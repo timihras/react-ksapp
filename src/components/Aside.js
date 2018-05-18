@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
-import NewItemModal from './newItem/NewItemModal';
+import WizardModal from './wizards/WizardModal';
 
 export const Aside = ({ auth, startLogout }) => (
 
@@ -15,7 +15,7 @@ export const Aside = ({ auth, startLogout }) => (
     </div>
     <nav className="aside__nav">
 
-      <NewItemModal />
+      <WizardModal />
 
       <NavLink to="/pets" activeClassName='nav-active'>
         <i className="far fa-heart"></i> Varovanci
@@ -29,9 +29,9 @@ export const Aside = ({ auth, startLogout }) => (
       <NavLink to="/profile" activeClassName='nav-active'>
         <i className="far fa-user-circle"></i> Moj račun
         </NavLink>
-      <button className="button button__nav button__nav--link" onClick={startLogout}>
+      <a className="button button__nav button__nav--link" onClick={startLogout}>
         <i className="fas fa-sign-out-alt"></i> Odjavi
-        </button>
+        </a>
     </nav>
   </aside>
 

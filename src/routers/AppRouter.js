@@ -21,6 +21,8 @@ import PetAddPage from '../components/pets/PetAddPage';
 import PetProfilePage from '../components/pets/PetProfilePage';
 import PetNotesAdd from '../components/pets/PetNotesAdd';
 
+import DogBoardingWizard from '../components/wizards/DogBoardingWizard';
+
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -28,11 +30,12 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
+
         <PrivateRoute path="/dashboard" component={DashboardPage} />
 
-        <PrivateRoute path="/customers/:id" component={CustomerProfilePage} />
         <PrivateRoute path="/customers/add" component={CustomerAddPage} />
         <PrivateRoute path="/customers/note-add" component={CustomerNotesAdd} />
+        <PrivateRoute path="/customers/:id" component={CustomerProfilePage} />
         <PrivateRoute path="/customers" component={CustomersDashboardPage} />
         <PrivateRoute path="/edit-customer/:id" component={CustomerEditPage} />
 
@@ -41,6 +44,11 @@ const AppRouter = () => (
         <PrivateRoute path="/pets/:id" component={PetProfilePage} />
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
         <PrivateRoute path="/edit-pet/:id" component={PetEditPage} />
+
+        <PrivateRoute path="/new/dog-boarding" component={DogBoardingWizard} />
+        <PrivateRoute path="/new/cat-boarding" component={DogBoardingWizard} />
+        <PrivateRoute path="/new/cat-visits" component={DogBoardingWizard} />
+
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import NotesForm from '../NotesForm';
+import NotesForm from '../forms/NotesForm';
 import { startEditCustomer } from '../../actions/customers';
 
 class CustomerNotesAdd extends Component {

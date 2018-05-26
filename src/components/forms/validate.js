@@ -1,22 +1,49 @@
 const validate = values => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
+  const errors = {
+    c: {},
+    g: {},
+    p: {}
+  };
+
+  if (!values.c) {
+    values.c = {};
   }
-  if (!values.lastName) {
-    errors.lastName = 'Required';
+  if (!values.c.firstName) {
+    errors.c.firstName = 'To polje je obvezno.';
   }
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+  if (!values.c.lastName) {
+    errors.c.lastName = 'To polje je obvezno.';
   }
-  if (!values.sex) {
-    errors.sex = 'Required';
+  if (!values.c.phoneNumber) {
+    errors.c.phoneNumber = 'To polje je obvezno.';
   }
-  if (!values.favoriteColor) {
-    errors.favoriteColor = 'Required';
+  if (values.c.email && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.c.email))) {
+    errors.c.email = 'Vpisana vrednost ni email.';
   }
+
+  if (!values.g) {
+    values.g = {};
+  }
+  if (!values.g.firstName) {
+    errors.g.firstName = 'To polje je obvezno.';
+  }
+  if (!values.g.phoneNumber) {
+    errors.g.phoneNumber = 'To polje je obvezno.';
+  }
+  if (values.g.email && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.g.email))) {
+    errors.g.email = 'Vpisana vrednost ni email.';
+  }
+
+  if (!values.p) {
+    values.p = {};
+  }
+  if (!values.p.type) {
+    errors.p.type = 'To polje je obvezno.';
+  }
+  if (!values.p.name) {
+    errors.p.name = 'To polje je obvezno.';
+  }
+
   return errors;
 };
 

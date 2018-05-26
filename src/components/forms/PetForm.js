@@ -31,14 +31,15 @@ const PetForm = (props) => {
   return (
     <form className="wizard__form" onSubmit={handleSubmit}>
       <Field
-        name="p.type"
-        component={renderTypeSelector}
-      />
-      <Field
         name="p.name"
         type="text"
         component={renderField}
         label="Ime"
+        autoFocus={true}
+      />
+      <Field
+        name="p.type"
+        component={renderTypeSelector}
       />
       <Field
         name="p.gender"
@@ -54,7 +55,7 @@ const PetForm = (props) => {
         name="p.breed"
         type="text"
         component={renderField}
-        label="Ime"
+        label="Pasma"
       />
       <button type="button" className="button link" onClick={prevPage}>
         <i className="fas fa-angle-left"></i> Nazaj

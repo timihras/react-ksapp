@@ -12,6 +12,7 @@ const CustomerForm = (props) => {
         type="text"
         component={renderField}
         label="Ime"
+        autoFocus={true}
       />
       <Field
         name="c.lastName"

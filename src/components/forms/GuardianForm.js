@@ -13,6 +13,7 @@ const GuardianForm = (props) => {
         type='text'
         component={renderField}
         label="Ime"
+        autoFocus={true}
       />
       <Field
         name='g.lastName'
@@ -30,7 +31,7 @@ const GuardianForm = (props) => {
         name='g.email'
         type='text'
         component={renderField}
-        label="Enail"
+        label="Email"
       />
 
       <div className="wizard__actions">

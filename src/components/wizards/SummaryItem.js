@@ -1,8 +1,6 @@
 import React from 'react'
 
 const replaceKeyWithName = (keyValue) => {
-  let result = keyValue;
-
   const keys = [
     'firstName', 'lastName', 'address', 'post', 'city', 'phoneNumber', 'email',   // Customer, Guardian
     'birth', 'breed', 'name', 'owner', 'type', 'gender'                           // Pet
@@ -13,13 +11,8 @@ const replaceKeyWithName = (keyValue) => {
     'Letnik', 'Pasma', 'Ime', 'Lastnik', 'Vrsta', 'Spol'                          // Pet
   ];
 
-  keys.forEach((key, index) => {
-    if (key === keyValue) {
-      result = names[index];
-    }
-  })
-
-  return result;
+  const index = keys.findIndex((key) => key === keyValue);
+  return index >= 0 ? names[index] : keyValue;
 }
 
 const SummaryItem = (props) => {

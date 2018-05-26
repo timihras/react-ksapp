@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getFormValues, reset } from 'redux-form';
 import CustomerForm from '../forms/CustomerForm';
 import GuardianForm from '../forms/GuardianForm';
 import PetForm from '../forms/PetForm';
 import SummaryPage from './SummaryPage';
+import { submitWizard } from '../../actions/wizard';
 
 class DogBoardingWizard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       page: 1,
     }
@@ -30,8 +33,11 @@ class DogBoardingWizard extends Component {
     }))
   }
 
-  onSubmit = () => {
-    console.log('submit');
+  onSubmit = (values) => {
+    return this.props.submitWizard(values).then(() => {
+      this.props.reset();
+      this.props.history.push('/customers');
+    });
   }
 
   render() {
@@ -83,4 +89,13 @@ class DogBoardingWizard extends Component {
   }
 }
 
-export default DogBoardingWizard;
+const mapStateToProps = (state, props) => ({
+  values: getFormValues(props.form)(state)
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  submitWizard: (formData) => dispatch(submitWizard(formData)),
+  reset: () => dispatch(reset('dog-boarding'))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DogBoardingWizard);

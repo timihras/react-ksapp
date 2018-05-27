@@ -1,11 +1,22 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 
-export const login = (uid, displayName, photoUrl) => ({
+export const login = (uid, displayName, photoURL, roles) => ({
   type: 'LOGIN',
   uid,
   displayName,
-  photoUrl
+  photoURL,
+  roles
 });
+
+export const setUser = (uid) => {
+  return (dispatch) => {
+    return firebase.firestore().collection('users').doc(uid).get().then((doc) => {
+      const { uid, displayName, photoURL, roles } = doc.data();
+      dispatch(login(uid, displayName, photoURL, roles));
+      return doc.data();
+    });
+  }
+}
 
 export const startLogin = () => {
   return () => {
@@ -20,7 +31,7 @@ const updateUserData = (user) => {
     uid: user.uid,
     email: user.email,
     displayName: user.displayName,
-    photoUrl: user.photoUrl,
+    photoURL: user.photoURL || '',
     roles: {
       subscriber: true
     }

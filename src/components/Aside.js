@@ -9,7 +9,7 @@ export const Aside = ({ auth, startLogout }) => (
 
   <aside>
     <img src="/images/logo.png" className="aside__logo" />
-    <img src={auth.photoUrl} className="aside__avatar" />
+    <img src={auth.photoURL} className="aside__avatar" />
     <div className="aside__username">
       {auth.displayName}
     </div>
@@ -23,10 +23,10 @@ export const Aside = ({ auth, startLogout }) => (
       <NavLink to="/customers" activeClassName='nav-active'>
         <i className="far fa-user"></i> Stranke
         </NavLink>
-      <NavLink to="/calendar" activeClassName='nav-active'>
+      <NavLink to="/calendar" activeClassName='nav-active' className="link-disabled">
         <i className="far fa-calendar-alt"></i> Koledar obiskov
         </NavLink>
-      <NavLink to="/profile" activeClassName='nav-active'>
+      <NavLink to="/profile" activeClassName='nav-active' className="link-disabled">
         <i className="far fa-user-circle"></i> Moj račun
         </NavLink>
       <a className="button button__nav button__nav--link" onClick={startLogout}>

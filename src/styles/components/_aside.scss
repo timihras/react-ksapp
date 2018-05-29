@@ -11,6 +11,10 @@ aside {
     z-index: 1;
 }
 
+.aside__action {
+    margin: $xl-size 0;
+}
+
 .aside__avatar {
     display: block;
     border: 1px solid $off-white;
@@ -35,7 +39,7 @@ aside {
         font-size: $font-size-large;
         text-decoration: none;
         color: $dark-grey;
-        margin: $s-size;
+        margin: $xs-size;
         padding: $s-size;
     }
 }

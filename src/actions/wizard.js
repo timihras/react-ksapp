@@ -27,7 +27,16 @@ export const submitWizard = (formData) => {
       phoneNumber = '',
       email = ''
     } = formData.c;
-    const customer = { firstName, lastName, address, post, city, phoneNumber, email };
+
+    const guardians = [{
+      firstName: formData.g.firstName || '',
+      lastName: formData.g.lastName || '',
+      phoneNumber: formData.g.phoneNumber || '',
+      email: formData.g.email || ''
+    }]
+
+    const customer = { firstName, lastName, address, post, city, phoneNumber, email, guardians };
+
     return database.collection('customers').add(customer).then((ref) => {
       dispatch(addCustomer({
         id: ref.id,
@@ -41,8 +50,19 @@ export const submitWizard = (formData) => {
         birth = 0,
         breed = ''
       } = formData.p;
+
+      const {
+        feeding = '', walking = '', health = '', habits = '', likes = '', afraid = '',
+        isNutered = 'Maybe', fromKennel = 'Maybe', hasBitten = 'Maybe', isPlayful = 'Maybe',
+        aggressiveAroundFood = 'Maybe', aggressiveAroundToys = 'Maybe',
+      } = formData.d
+
+      const data = { feeding, walking, health, habits, likes, afraid, isNutered, fromKennel, hasBitten, isPlayful, aggressiveAroundFood, aggressiveAroundToys };
+
       const owner = ref.id;
-      const pet = { name, type, gender, birth, breed, owner };
+
+      const pet = { name, type, gender, birth, breed, data, owner };
+
       return database.collection('pets').add(pet).then((ref) => {
         dispatch(addPet({
           id: ref.id,

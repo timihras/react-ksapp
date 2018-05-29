@@ -4,7 +4,8 @@ import { getFormValues, reset } from 'redux-form';
 import CustomerForm from '../forms/CustomerForm';
 import GuardianForm from '../forms/GuardianForm';
 import PetForm from '../forms/PetForm';
-import SummaryPage from './SummaryPage';
+import SummaryForm from '../forms/SummaryForm';
+import PetDetailsForm from '../forms/PetDetailsForm';
 import { submitWizard } from '../../actions/wizard';
 
 class DogBoardingWizard extends Component {
@@ -59,31 +60,37 @@ class DogBoardingWizard extends Component {
               onClick={() => this.onClickNav(3)}
             >Podatki o ljubljenčku</li>
             <li
-              className={(page === 4 ? 'active' : '')}
+              className={(page === 4 ? 'active' : '') + (page > 4 ? ' finish' : '')}
               onClick={() => this.onClickNav(4)}
+            >Podrobnosti o ljubljenčku</li>
+            <li
+              className={(page === 5 ? 'active' : '')}
+              onClick={() => this.onClickNav(5)}
             >Povzetek</li>
           </ul>
         </div>
-        <div>
 
-          {page === 1 && <CustomerForm
-            onSubmit={this.nextPage}
-          />}
-          {page === 2 && <GuardianForm
-            prevPage={this.prevPage}
-            onSubmit={this.nextPage}
-          />}
-          {page === 3 && <PetForm
-            prevPage={this.prevPage}
-            onSubmit={this.nextPage}
-          />}
-          {page === 4 && <SummaryPage
-            prevPage={this.prevPage}
-            onSubmit={this.onSubmit}
-            form="dog-boarding"
-          />}
+        {page === 1 && <CustomerForm
+          onSubmit={this.nextPage}
+        />}
+        {page === 2 && <GuardianForm
+          prevPage={this.prevPage}
+          onSubmit={this.nextPage}
+        />}
+        {page === 3 && <PetForm
+          prevPage={this.prevPage}
+          onSubmit={this.nextPage}
+        />}
+        {page === 4 && <PetDetailsForm
+          prevPage={this.prevPage}
+          onSubmit={this.nextPage}
+        />}
+        {page === 5 && <SummaryForm
+          prevPage={this.prevPage}
+          onSubmit={this.onSubmit}
+          form="dog-boarding"
+        />}
 
-        </div>
       </div>
     )
   }

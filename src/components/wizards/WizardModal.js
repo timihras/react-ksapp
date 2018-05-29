@@ -18,7 +18,7 @@ class WizardModal extends React.Component {
   render() {
     return (
 
-      <div>
+      <div className="aside__action">
         <button className="button button__primary" onClick={this.handleOpenModal}>
           <i className="fas fa-plus"></i> Dodaj
         </button>
@@ -35,11 +35,11 @@ class WizardModal extends React.Component {
               <div className="modal__icon"><i className="fas fa-bug"></i></div>
               <div className="modal__subtitle">Varstvo psa</div>
             </Link>
-            <Link to='/new/cat-boarding' className="modal__item">
+            <Link to='/new/cat-boarding' className="modal__item link-disabled">
               <div className="modal__icon"><i className="fas fa-bug"></i></div>
               <div className="modal__subtitle">Varstvo muce</div>
             </Link>
-            <Link to='/new/cat-visits' className="modal__item">
+            <Link to='/new/cat-visits' className="modal__item link-disabled">
               <div className="modal__icon"><i className="fas fa-bug"></i></div>
               <div className="modal__subtitle">Oskrba na domu</div>
             </Link>

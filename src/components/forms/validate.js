@@ -2,7 +2,8 @@ const validate = values => {
   const errors = {
     c: {},
     g: {},
-    p: {}
+    p: {},
+    d: {}
   };
 
   if (!values.c) {

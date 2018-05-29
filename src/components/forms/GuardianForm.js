@@ -8,31 +8,36 @@ const GuardianForm = (props) => {
   return (
     <form className="wizard__form" onSubmit={handleSubmit}>
 
-      <Field
-        name='g.firstName'
-        type='text'
-        component={renderField}
-        label="Ime"
-        autoFocus={true}
-      />
-      <Field
-        name='g.lastName'
-        type='text'
-        component={renderField}
-        label="Priimek"
-      />
-      <Field
-        name='g.phoneNumber'
-        type='text'
-        component={renderField}
-        label="Telefonska številka"
-      />
-      <Field
-        name='g.email'
-        type='text'
-        component={renderField}
-        label="Email"
-      />
+      <h1 className="wizard__title">Koga lahko kontaktiramo v nujnih primerih?</h1>
+      <div>
+        <Field
+          name='g.firstName'
+          type='text'
+          component={renderField}
+          label="Ime"
+          autoFocus={true}
+        />
+        <Field
+          name='g.lastName'
+          type='text'
+          component={renderField}
+          label="Priimek"
+        />
+      </div>
+      <div>
+        <Field
+          name='g.phoneNumber'
+          type='text'
+          component={renderField}
+          label="Telefonska številka"
+        />
+        <Field
+          name='g.email'
+          type='text'
+          component={renderField}
+          label="Email"
+        />
+      </div>
 
       <div className="wizard__actions">
         <button

@@ -13,7 +13,11 @@ body {
     font-weight: 400;
     font-size: $s-size;
     line-height: 1.6;
-    margin-bottom: $xl-size;
+}
+
+main {
+    min-height: 100vh;
+    height: auto;
 }
 
 h1 {
@@ -23,6 +27,16 @@ h1 {
 
 .link {
     cursor: pointer;
+}
+
+.link-disabled {
+    color: $grey !important;
+    cursor: default;
+    pointer-events: none;
+}
+
+.hide {
+    display: none !important;
 }
 
 button {

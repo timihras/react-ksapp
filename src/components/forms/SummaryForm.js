@@ -8,7 +8,7 @@ const SummaryPage = (props) => {
   const { handleSubmit, pristine, prevPage, submitting } = props;
   return (
     <form onSubmit={handleSubmit} className="wizard__form">
-      <h1>Podatki, ki si jih vpisal..</h1>
+      <h1>Podatki iz obrazca..</h1>
       <div className="wizard__summary">
         <SummaryItem item={customer} title='Podatki o lastniku' />
         <SummaryItem item={guardian} title='Podatki za nujne primere' />

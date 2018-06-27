@@ -1,0 +1,23 @@
+.logo-wrapper {
+  text-align: center;
+}
+
+.logo-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 3rem auto 2rem;
+}
+
+// .nav-active {
+//   border-left: 20px solid $accent;
+// }
+.nav-active * {
+  color: $accent !important;
+}
+
+.link-disabled {
+  color: $grey !important;
+  cursor: default;
+  pointer-events: none;
+}

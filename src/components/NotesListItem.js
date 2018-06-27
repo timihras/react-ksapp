@@ -1,23 +1,32 @@
 import React from 'react';
 import moment from 'moment';
+import Grid from '@material-ui/core/Grid';
+import ListItem from '@material-ui/core/ListItem';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Typography from '@material-ui/core/Typography';
 
-export const CustomerNotesListItem = (props) => {
-  return (
-    <div className="note">
-      <div className="note__text">{props.text}</div>
-      <div className="note__info">
-        <div className="note__author">
-          Napisal/a <span>{props.author}</span>, dne {moment(props.created).format('DD. MM. YYYY')}
-        </div>
-        <div className="note__action">
-          <i
-            className="fas fa-trash link"
-            onClick={() => props.onDelete(props.created)}
-          ></i>
-        </div>
-      </div>
-    </div>
-  );
-};
+export const CustomerNotesListItem = (props) => (
+  <ListItem divider>
+    <Grid container spacing={24}>
+      <Grid item xs={2}>
+        <Typography variant="body2">
+          {props.author}
+        </Typography>
+        <Typography variant="caption">
+          {moment(props.created).format('DD. MM. YYYY')}
+        </Typography>
+      </Grid>
+      <Grid item xs={9}>
+        <Typography>{props.text}</Typography>
+      </Grid>
+      <Grid item xs={1}>
+        <IconButton aria-label="Delete" color="primary">
+          <DeleteIcon onClick={() => props.onDelete(props.created)} />
+        </IconButton>
+      </Grid>
+    </Grid>
+  </ListItem>
+);
 
 export default CustomerNotesListItem;

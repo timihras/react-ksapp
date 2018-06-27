@@ -1,13 +1,11 @@
 import React from 'react';
-import Filters from '../Filters';
-import CustomerList from './CustomerList';
-import CustomerSummary from './CustomerSummary';
+import CustomerTable from './CustomerTable';
+import PageTitle from '../common/PageTitle';
 
 const CustomersDashboardPage = () => (
   <div>
-    <CustomerSummary />
-    <Filters />
-    <CustomerList />
+    <PageTitle title='Seznam lastnikov živali' />
+    <CustomerTable />
   </div>
 );
 

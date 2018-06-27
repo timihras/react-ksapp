@@ -1,13 +1,12 @@
 import React from 'react';
-import Filters from '../Filters';
-import PetList from './PetList';
-import PetSummary from './PetSummary';
+import PetTable from './PetTable';
+import PageTitle from '../common/PageTitle';
+
 
 const PetsDashboardPage = () => (
   <div>
-    <PetSummary />
-    <Filters />
-    <PetList />
+    <PageTitle title='Seznam hišnih ljubljenčkov' />
+    <PetTable />
   </div>
 );
 

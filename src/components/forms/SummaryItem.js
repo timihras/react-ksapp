@@ -20,6 +20,19 @@ const replaceKeyWithName = (keyValue) => {
   return index >= 0 ? names[index] : keyValue;
 }
 
+const replaceValueWithName = (keyValue) => {
+  const values = [
+    'dog', 'cat', 'other', 'male', 'female',
+  ];
+
+  const names = [
+    'Pes', 'Mačka', 'Ostalo', 'Samec', 'Samica',
+  ];
+
+  const index = values.findIndex((key) => key === keyValue);
+  return index >= 0 ? names[index] : keyValue;
+}
+
 const SummaryItem = (props) => {
   const item = props.item ? props.item : {};
   return (
@@ -29,7 +42,7 @@ const SummaryItem = (props) => {
         {
           Object.keys(item).map((key) => (
             <ListItem dense key={key}>
-              <ListItemText primary={replaceKeyWithName(key)} secondary={item[key]} className="wizard__summary-item" />
+              <ListItemText primary={replaceKeyWithName(key)} secondary={replaceValueWithName(item[key])} className="wizard__summary-item" />
             </ListItem>
           ))
         }

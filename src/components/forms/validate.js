@@ -12,9 +12,6 @@ const validate = values => {
   if (!values.c.firstName) {
     errors.c.firstName = 'To polje je obvezno.';
   }
-  if (!values.c.lastName) {
-    errors.c.lastName = 'To polje je obvezno.';
-  }
   if (!values.c.phoneNumber) {
     errors.c.phoneNumber = 'To polje je obvezno.';
   }

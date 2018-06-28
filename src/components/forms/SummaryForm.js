@@ -2,27 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, getFormValues } from 'redux-form';
 import SummaryItem from './SummaryItem';
+import { Grid, Divider } from '@material-ui/core';
 
 const SummaryPage = (props) => {
   const { c: customer, g: guardian, p: pet, d: details } = props.values || {};
-  const { handleSubmit, pristine, prevPage, submitting } = props;
   return (
-    <form onSubmit={handleSubmit} className="wizard__form">
-      <h1>Podatki iz obrazca..</h1>
-      <div className="wizard__summary">
-        <SummaryItem item={customer} title='Podatki o lastniku' />
-        <SummaryItem item={guardian} title='Podatki za nujne primere' />
-        <SummaryItem item={pet} title='Podatki o psu' />
-        <SummaryItem item={details} title='Podrobnosti o psu' />
-      </div>
-      <div className="wizard__actions">
-        <button type="button" className="button link" onClick={prevPage}>
-          <i className="fas fa-angle-left"></i> Nazaj
-        </button>
-        <button type="submit" className="button link" disabled={pristine || submitting}>
-          Potrdi
-        </button>
-      </div>
+    <form>
+      <Grid container spacing={16}>
+        <Grid item xs={12} sm={6} md={4}>
+          <SummaryItem item={customer} title='Podatki o lastniku' />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <SummaryItem item={guardian} title='Podatki za nujne primere' />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <SummaryItem item={pet} title='Podatki o psu' />
+        </Grid>
+      </Grid>
+      <Divider />
     </form>
   )
 }

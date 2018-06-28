@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography, List, ListItem, ListItemText } from '@material-ui/core';
 
 const replaceKeyWithName = (keyValue) => {
   const keys = [
@@ -22,13 +23,17 @@ const replaceKeyWithName = (keyValue) => {
 const SummaryItem = (props) => {
   const item = props.item ? props.item : {};
   return (
-    <div className="summary">
-      {props.title && props.item ? <div className="summary__title">{props.title}</div> : ''}
-      <div className="summary__list">
+    <div>
+      {props.title && props.item ? <Typography gutterBottom>{props.title}</Typography> : ''}
+      <List dense disablePadding>
         {
-          Object.keys(item).map((key) => <p className="summary__item" key={key}><span>{replaceKeyWithName(key)}:</span> <span>{item[key]}</span></p>)
+          Object.keys(item).map((key) => (
+            <ListItem dense key={key}>
+              <ListItemText primary={replaceKeyWithName(key)} secondary={item[key]} className="wizard__summary-item" />
+            </ListItem>
+          ))
         }
-      </div>
+      </List>
     </div>
   )
 }

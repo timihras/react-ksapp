@@ -2,79 +2,91 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import renderField from './renderField';
 import validate from './validate';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { InputLabel, Select, MenuItem, FormControl, FormHelperText } from '@material-ui/core';
 
-const gender = ['male', 'female', 'n/a'];
-const type = ['dog', 'cat', 'other'];
+const gender = [{ value: 'male', text: 'Samec' }, { value: 'female', text: 'Samica' }];
+const type = [{ value: 'dog', text: 'Pes' }, { value: 'cat', text: 'Mačka' }, { value: 'other', text: 'Ostalo' }];
 
-const renderGenderSelector = ({ input, meta: { touched, error } }) => (
-  <div className="wizard__form-field">
-    <label>Spol</label>
-    <select {...input} className="select">
-      <option value="">Izberi spol ljubljenčka...</option>
-      {gender.map(val => <option value={val} key={val}>{val}</option>)}
-    </select>
-    {touched && error && <div className="form__error">{error}</div>}
-  </div>
+const renderGenderSelector = ({ input, meta: { touched, error }, ...custom }) => (
+  <FormControl className="wizard__select" error={!!touched && !!error}>
+    <InputLabel htmlFor="animal-gender">Spol</InputLabel>
+    <Select
+      {...input}
+      inputProps={{
+        id: 'animal-gender',
+      }}
+      {...custom}
+    >
+      <MenuItem value=""><em>Spol</em></MenuItem>
+      {gender.map(val => <MenuItem key={val.value} value={val.value}>{val.text}</MenuItem>)}
+    </Select>
+    {!!touched && !!error && <FormHelperText>{error}</FormHelperText>}
+  </FormControl>
 );
 
-const renderTypeSelector = ({ input, meta: { touched, error } }) => (
-  <div className="wizard__form-field">
-    <label>Vrsta</label>
-    <select {...input} className="select">
-      <option value="">Izberi tip ljubljenčka...</option>
-      {type.map(val => <option value={val} key={val}>{val}</option>)}
-    </select>
-    {touched && error && <div className="form__error">{error}</div>}
-  </div>
+const renderTypeSelector = ({ input, meta: { touched, error }, ...custom }) => (
+  <FormControl className="wizard__select" error={!!touched && !!error}>
+    <InputLabel htmlFor="animal-type">Vrsta</InputLabel>
+    <Select
+      {...input}
+      inputProps={{
+        id: 'animal-type',
+      }}
+      {...custom}
+    >
+      <MenuItem value=""><em>Vrsta</em></MenuItem>
+      {type.map(val => <MenuItem key={val.value} value={val.value}>{val.text}</MenuItem>)}
+    </Select>
+    {!!touched && !!error && <FormHelperText>{error}</FormHelperText>}
+  </FormControl>
 );
 
 const PetForm = (props) => {
   const { handleSubmit, prevPage } = props;
   return (
     <form className="wizard__form" onSubmit={handleSubmit}>
-      <h1 className="wizard__title">Potrebujemo tudi nekaj informacij o ljubljenčku..</h1>
-      <div>
-        <Field
-          name="p.name"
-          type="text"
-          component={renderField}
-          label="Ime"
-          autoFocus={true}
-        />
-      </div>
-      <div>
-        <Field
-          name="p.type"
-          component={renderTypeSelector}
-        />
-        <Field
-          name="p.gender"
-          component={renderGenderSelector}
-        />
-      </div>
-      <div>
-        <Field
-          name="p.birth"
-          type="text"
-          component={renderField}
-          label="Letnik"
-        />
-        <Field
-          name="p.breed"
-          type="text"
-          component={renderField}
-          label="Pasma"
-        />
-      </div>
-      <div className="wizard__actions">
-        <button type="button" className="button link" onClick={prevPage}>
-          <i className="fas fa-angle-left"></i> Nazaj
-      </button>
+      <Grid container spacing={16}>
+        <Grid item xs={12}>
+          <Typography>Potrebujemo tudi nekaj informacij o ljubljenčku..</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Field
+            name="p.name"
+            component={renderField}
+            label="Ime"
+            autoFocus={true}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Field
+            name="p.type"
+            component={renderTypeSelector}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Field
+            name="p.gender"
+            component={renderGenderSelector}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Field
+            name="p.birth"
+            component={renderField}
+            label="Letnik"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Field
+            name="p.breed"
+            component={renderField}
+            label="Pasma"
+          />
+        </Grid>
+      </Grid>
 
-        <button type="submit" className="button link">
-          <i className="fas fa-angle-right"></i> Naprej
-      </button>
-      </div>
     </form>
   )
 }

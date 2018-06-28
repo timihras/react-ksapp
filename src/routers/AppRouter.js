@@ -22,6 +22,7 @@ import PetProfilePage from '../components/pets/PetProfilePage';
 import PetNotesAdd from '../components/pets/PetNotesAdd';
 
 import DogBoardingWizard from '../components/wizards/DogBoardingWizard';
+import WizardMasterPage from '../components/wizards/WizardMasterPage';
 
 export const history = createHistory();
 
@@ -45,7 +46,7 @@ const AppRouter = () => (
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
         <PrivateRoute path="/edit-pet/:id" component={PetEditPage} />
 
-        <PrivateRoute path="/new/dog-boarding" component={DogBoardingWizard} />
+        <PrivateRoute path="/new/dog-boarding" component={WizardMasterPage} />
         <PrivateRoute path="/new/cat-boarding" component={DogBoardingWizard} />
         <PrivateRoute path="/new/cat-visits" component={DogBoardingWizard} />
 

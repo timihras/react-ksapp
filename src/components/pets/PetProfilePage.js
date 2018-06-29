@@ -33,7 +33,7 @@ const PetProfilePage = (props) => {
       {
         pet ? (
           <div className={classes.root}>
-            <Grid container spacing={16}>
+            <Grid container spacing={24}>
               <Grid item xs={12} sm={3}>
                 <ProfilePageInfoAvatar
                   favorite={pet.favorite}
@@ -47,7 +47,7 @@ const PetProfilePage = (props) => {
                   <Grid container spacing={24}>
                     <Grid item xs={12}>
                       <ProfilePageHeader
-                        editLink={`edit-pet/${pet.id}`}
+                        editLink={`/edit-pet/${pet.id}`}
                         subtitle={pet.breed}
                         title={pet.name}
                       />

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import renderField from './renderField';
 import validate from './validate';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { InputLabel, Select, MenuItem, FormControl, FormHelperText } from '@material-ui/core';
 
@@ -43,57 +42,67 @@ const renderTypeSelector = ({ input, meta: { touched, error }, ...custom }) => (
   </FormControl>
 );
 
-const PetForm = (props) => {
-  const { handleSubmit, prevPage } = props;
-  return (
-    <form className="wizard__form" onSubmit={handleSubmit}>
-      <Grid container spacing={16}>
-        <Grid item xs={12}>
-          <Typography>Potrebujemo tudi nekaj informacij o ljubljenčku..</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Field
-            name="p.name"
-            component={renderField}
-            label="Ime"
-            autoFocus={true}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            name="p.type"
-            component={renderTypeSelector}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            name="p.gender"
-            component={renderGenderSelector}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            name="p.birth"
-            component={renderField}
-            label="Letnik"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            name="p.breed"
-            component={renderField}
-            label="Pasma"
-          />
-        </Grid>
-      </Grid>
+class PetForm extends React.Component {
 
-    </form>
-  )
+  componentWillReceiveProps(nextProps) {
+    const { change } = this.props;
+    const values = nextProps.p ? nextProps.p : {};
+    if (values !== null) {
+      change('p.name', values.name);
+      change('p.type', values.type);
+      change('p.gender', values.gender);
+      change('p.birth', values.birth);
+      change('p.breed', values.breed);
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            <Field
+              name="p.name"
+              component={renderField}
+              label="Ime"
+              autoFocus={true}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              name="p.type"
+              component={renderTypeSelector}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              name="p.gender"
+              component={renderGenderSelector}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              name="p.birth"
+              component={renderField}
+              label="Letnik"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              name="p.breed"
+              component={renderField}
+              label="Pasma"
+            />
+          </Grid>
+        </Grid>
+      </div>
+    )
+  }
 }
 
 export default reduxForm({
   form: 'dog-boarding',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate
+  validate,
 })(PetForm)

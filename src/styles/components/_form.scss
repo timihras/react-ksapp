@@ -1,15 +1,10 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    >* {
-        margin-bottom: $m-size;
-    }
+  padding: $m-size;
 }
 
-.form__error {
-    font-style: italic;
-}
-
-label {
-    color: $grey;
+.form__actions {
+  padding: $m-size 0;
+  button {
+    margin-right: $m-size;
+  }
 }

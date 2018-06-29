@@ -1,18 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Paper } from '@material-ui/core';
 
 import Spinner from '../common/Spinner';
-import CustomerPetsList from './CustomerPetsList';
-import CustomerNotesList from './CustomerNotesList';
+
+import NotesList from '../NotesList';
+import ProfilePageHeader from '../ProfilePageHeader';
+import ProfilePageInfoAvatar from '../ProfilePageInfoAvatar';
 import CustomerInfoTable from './CustomerInfoTable';
-import CustomerHeader from './CustomerHeader';
-import CustomerInfoAvatar from './CustomerInfoAvatar';
+import CustomerPetsList from './CustomerPetsList';
 
 
 const styles = theme => ({
@@ -36,13 +35,22 @@ const CustomerProfilePage = (props) => {
           <div className={classes.root}>
             <Grid container spacing={24}>
               <Grid item xs={12} sm={3}>
-                <CustomerInfoAvatar customer={customer} goBack={goBack} />
+                <ProfilePageInfoAvatar
+                  favorite={customer.favorite}
+                  goBack={goBack}
+                  text={customer.firstName[0].toUpperCase() + customer.lastName[0].toUpperCase()}
+                  abc={'A'}
+                />
               </Grid>
               <Grid item xs={12} sm={9}>
                 <Paper className={classes.paper}>
                   <Grid container spacing={24}>
                     <Grid item xs={12}>
-                      <CustomerHeader customer={customer} />
+                      <ProfilePageHeader
+                        editLink={`edit-customer/${customer.id}`}
+                        subtitle={customer.email}
+                        title={`${customer.firstName} ${customer.lastName}`}
+                      />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <CustomerInfoTable customer={customer} />
@@ -53,7 +61,11 @@ const CustomerProfilePage = (props) => {
                   </Grid>
                 </Paper>
               </Grid>
-              <CustomerNotesList customer={customer} />
+              <NotesList
+                module='customers'
+                id={customer.id}
+                notes={customer.notes}
+              />
             </Grid>
           </div>
         ) : (

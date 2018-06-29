@@ -1,37 +1,39 @@
 import React from 'react'
 import { Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import replaceValueWithName from '../../utils/replaceValues';
+import replaceKeyWithName from '../../utils/replaceKeys';
 
-const replaceKeyWithName = (keyValue) => {
-  const keys = [
-    'firstName', 'lastName', 'address', 'post', 'city', 'phoneNumber', 'email',   // Customer, Guardian
-    'birth', 'breed', 'name', 'owner', 'type', 'gender',                          // Pet
-    'feeding', 'walking', 'health', 'likes', 'habits', 'afraid',
-    'isNutered', 'fromKennel', 'isPlayful', 'hasBitten', 'aggressiveAroundFood', 'aggressiveAroundToys' // Details
-  ];
+// const replaceKeyWithName = (keyValue) => {
+//   const keys = [
+//     'firstName', 'lastName', 'address', 'post', 'city', 'phoneNumber', 'email',   // Customer, Guardian
+//     'birth', 'breed', 'name', 'owner', 'type', 'gender',                          // Pet
+//     'feeding', 'walking', 'health', 'likes', 'habits', 'afraid',
+//     'isNutered', 'fromKennel', 'isPlayful', 'hasBitten', 'aggressiveAroundFood', 'aggressiveAroundToys' // Details
+//   ];
 
-  const names = [
-    'Ime', 'Priimek', 'Naslov', 'Pošta', 'Mesto', 'Tel. št.', 'Email',            // Customer, Guardian
-    'Letnik', 'Pasma', 'Ime', 'Lastnik', 'Vrsta', 'Spol',                         // Pet
-    'Hranjenje', 'Sprehodi', 'Zdravje', 'Obožuje', 'Navade', 'Se boji',
-    'Kastriran', 'Iz zavetišča', 'Je igriv', 'Je ugriznil', 'Agresiven ob hrani', 'Agresiven ob igračah' // Details
-  ];
+//   const names = [
+//     'Ime', 'Priimek', 'Naslov', 'Pošta', 'Mesto', 'Tel. št.', 'Email',            // Customer, Guardian
+//     'Letnik', 'Pasma', 'Ime', 'Lastnik', 'Vrsta', 'Spol',                         // Pet
+//     'Hranjenje', 'Sprehodi', 'Zdravje', 'Obožuje', 'Navade', 'Se boji',
+//     'Kastriran', 'Iz zavetišča', 'Je igriv', 'Je ugriznil', 'Agresiven ob hrani', 'Agresiven ob igračah' // Details
+//   ];
 
-  const index = keys.findIndex((key) => key === keyValue);
-  return index >= 0 ? names[index] : keyValue;
-}
+//   const index = keys.findIndex((key) => key === keyValue);
+//   return index >= 0 ? names[index] : keyValue;
+// }
 
-const replaceValueWithName = (keyValue) => {
-  const values = [
-    'dog', 'cat', 'other', 'male', 'female',
-  ];
+// const replaceValueWithName = (keyValue) => {
+//   const values = [
+//     'dog', 'cat', 'other', 'male', 'female',
+//   ];
 
-  const names = [
-    'Pes', 'Mačka', 'Ostalo', 'Samec', 'Samica',
-  ];
+//   const names = [
+//     'Pes', 'Mačka', 'Ostalo', 'Samec', 'Samica',
+//   ];
 
-  const index = values.findIndex((key) => key === keyValue);
-  return index >= 0 ? names[index] : keyValue;
-}
+//   const index = values.findIndex((key) => key === keyValue);
+//   return index >= 0 ? names[index] : keyValue;
+// }
 
 const SummaryItem = (props) => {
   const item = props.item ? props.item : {};

@@ -13,13 +13,11 @@ import CustomersDashboardPage from '../components/customers/CustomersDashboardPa
 import CustomerProfilePage from '../components/customers/CustomerProfilePage';
 import CustomerAddPage from '../components/customers/CustomerAddPage';
 import CustomerEditPage from '../components/customers/CustomerEditPage';
-import CustomerNotesAdd from '../components/customers/CustomerNotesAdd';
 
 import PetsDashboardPage from '../components/pets/PetsDashboardPage';
 import PetEditPage from '../components/pets/PetEditPage';
 import PetAddPage from '../components/pets/PetAddPage';
 import PetProfilePage from '../components/pets/PetProfilePage';
-import PetNotesAdd from '../components/pets/PetNotesAdd';
 
 import WizardMasterPage from '../components/wizards/WizardMasterPage';
 
@@ -34,13 +32,11 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage} />
 
         <PrivateRoute path="/customers/add" component={CustomerAddPage} />
-        <PrivateRoute path="/customers/note-add" component={CustomerNotesAdd} />
         <PrivateRoute path="/customers/:id" component={CustomerProfilePage} />
         <PrivateRoute path="/customers" component={CustomersDashboardPage} />
         <PrivateRoute path="/edit-customer/:id" component={CustomerEditPage} />
 
         <PrivateRoute path="/pets/add" component={PetAddPage} />
-        <PrivateRoute path="/pets/note-add" component={PetNotesAdd} />
         <PrivateRoute path="/pets/:id" component={PetProfilePage} />
         <PrivateRoute path="/pets" component={PetsDashboardPage} />
         <PrivateRoute path="/edit-pet/:id" component={PetEditPage} />

@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -18,10 +16,19 @@ import { startEditCustomer } from '../actions/customers';
 import { startEditPet } from '../actions/pets';
 
 import NotesListItem from './NotesListItem';
+import NoteAdd from './NoteAdd';
 
 const styles = theme => ({
   root: {
     width: '100%',
+  },
+  paper: {
+    margin: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
+    color: theme.palette.text.secondary,
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit,
   },
   divider: {
     margin: '2rem',
@@ -32,49 +39,60 @@ const styles = theme => ({
     justifyContent: 'space-between',
     margin: '0 2rem'
   },
-  paper: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2,
-    color: theme.palette.text.secondary,
-  },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
-  },
 });
 
 class NotesList extends React.Component {
-  onDelete = (noteId) => {
-    const { module, notes, id } = this.props;
-    const newNotes = notes.filter((note) => note.created !== id);
+  constructor(props) {
+    super(props);
+  }
 
+  onDelete = (noteId) => {
+    const { module, id } = this.props;
+    const notes = this.props.notes.filter((note) => note.created !== noteId);
     if (module === 'customers') {
-      this.props.startEditCustomer(id, { newNotes });
+      this.props.startEditCustomer(id, { notes });
     }
     else if (module === 'pets') {
-      this.props.startEditPet(id, { newNotes });
+      this.props.startEditPet(id, { notes });
+    }
+  };
+
+  handleSubmit = (text) => {
+    const { module, id, auth } = this.props
+    if (text) {
+      const note = [{
+        author: auth.displayName,
+        created: moment().valueOf(),
+        text,
+      }]
+
+      const _notes = this.props.notes ? this.props.notes : [];
+      const notes = _notes.concat(note);
+
+      if (module === 'pets') {
+        this.props.startEditPet(id, { notes });
+      }
+
+      if (module === 'customers') {
+        this.props.startEditCustomer(id, { notes });
+      }
     }
   };
 
   render() {
 
-    const { notes, module, classes, id } = this.props;
-    const paramsTo = {
-      pathname: `/${module}/note-add/`,
-      state: {
-        id
-      }
-    };
+    const { notes, module, classes } = this.props;
     return (
       <div className={classes.root}>
         <Divider className={classes.divider} />
         <div className={classes.flex}>
           <Typography variant="subheading">
-            Opombe
+            Opombe za {module === 'pets' ? 'hišnega ljubljenčka' : 'stranko'}
           </Typography>
-          <Button component={Link} to={paramsTo} color="primary" className={classes.button}>
-            <AddCircleIcon className={classes.leftIcon} />
-            Dodaj opombo
-          </Button>
+          <NoteAdd
+            module={module}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
         <Paper className={classes.paper}>
           <List>
@@ -106,6 +124,10 @@ NotesList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
 const mapDispatchToProps = (dispatch) => ({
   startEditCustomer: (id, updates) => dispatch(startEditCustomer(id, updates)),
   startEditPet: (id, updates) => dispatch(startEditPet(id, updates))
@@ -113,5 +135,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withStyles(styles),
-  connect(undefined, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(NotesList);

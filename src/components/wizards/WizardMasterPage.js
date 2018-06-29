@@ -118,7 +118,7 @@ class WizardMasterPage extends React.Component {
                           disabled={activeStep === 0}
                           onClick={this.handleBack}
                           className={classes.button}
-                          tabindex="-1"
+                          tabIndex="-1"
                         >
                           Back
                         </Button>

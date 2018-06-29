@@ -1,32 +1,16 @@
-.note {
-    background: white;
-    border: 1px solid $off-white;
-    border-radius: 5px;
-    margin: $s-size 0;
-    padding: $s-size;
+.notes>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.note__action {
-    opacity: 0;
-    padding-left: $s-size;
-    transition: all 0.3s ease-in-out;
+.notes__delete {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 
-.note__author {
-    color: $grey;
-    font-style: italic;
-    margin-top: $s-size;
-    span {
-        font-weight: bold;
-    }
-}
-
-.note__info {
-    display: flex;
-    justify-content: space-between;
-    &:hover {
-        .note__action {
-            opacity: 1;
-        }
-    }
+.notes:hover {
+  .notes__delete {
+    opacity: 1;
+  }
 }

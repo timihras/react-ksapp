@@ -1,168 +1,90 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Autosuggest from 'react-autosuggest';
-import { startEditPet } from '../../actions/pets';
+import { compose } from 'recompose';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, Paper } from '@material-ui/core';
+
 import petSelector from '../../selectors/petDetails';
-import ownerSelector from '../../selectors/owners';
-import PetNotesList from './PetNotesList';
+import Spinner from '../common/Spinner';
 
-export class PetProfilePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-      suggestions: [],
-      ownerId: '',
-      editOwner: false
-    };
-  };
+import NotesList from '../NotesList';
+import ProfilePageHeader from '../ProfilePageHeader';
+import ProfilePageInfoAvatar from '../ProfilePageInfoAvatar';
+import PetsInfoTable from './PetsInfoTable';
 
-  getSuggestions = value => {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    color: theme.palette.text.secondary,
+  }
+});
 
-    return inputLength === 0 ? [] : this.props.owners.filter(owner =>
-      owner.fullName.toLowerCase().slice(0, inputLength) === inputValue
-    );
-  };
+const PetProfilePage = (props) => {
 
-  getSuggestionValue = suggestion => suggestion.fullName;
+  const { goBack } = props.history;
+  const { pet, classes } = props;
 
-  renderSuggestion = suggestion => (
+  return (
     <div>
-      {suggestion.fullName}
-    </div>
-  );
-
-  onChange = (event, { newValue }) => {
-    this.setState(() => ({
-      value: newValue
-    }));
-  };
-
-
-  onSuggestionSelected = (event, { suggestion }) => {
-    this.setState(() => ({
-      ownerId: suggestion.id
-    }))
-  }
-
-  onSuggestionsFetchRequested = ({ value }) => {
-    this.setState(() => ({
-      suggestions: this.getSuggestions(value)
-    }));
-  };
-
-  onSuggestionsClearRequested = () => {
-    this.setState(() => {
-      suggestions: []
-    });
-  };
-
-  onEditOwner = () => {
-    this.setState(() => ({
-      editOwner: true
-    }))
-  }
-
-  onSaveOwner = () => {
-    this.props.startEditPet(this.props.pet.id, { owner: this.state.ownerId });
-    this.setState(() => ({
-      editOwner: false
-    }))
-  }
-
-  render() {
-    const { value, suggestions } = this.state;
-    const { goBack } = this.props.history;
-    const inputProps = {
-      placeholder: 'Iskanje lastnikov',
-      value,
-      onChange: this.onChange
-    };
-
-    return (
-      <div>
-        {this.props.pet ? (
-          <div>
-            <div className="page-header">
-              <div className="page-header__title">
-                <button className="button" onClick={goBack}>
-                  <i className="fas fa-angle-left"></i> Nazaj
-                </button>
-                <h1>{this.props.pet.name}</h1>
-              </div>
-              <div className="page-header__actions">
-                <Link className="button button--secondary" to={`/edit-pet/${this.props.pet.id}`}>
-                  <i className="far fa-edit"></i> Uredi
-                </Link>
-              </div>
-            </div>
-            <div className="content-container profile">
-              <div className="profile-data">
-                <h2>Podatki osebe</h2>
-                <div>
-                  <p>Ime: <br /><span>{this.props.pet.name}</span></p>
-                  <p>Pasma: <br /><span>{this.props.pet.breed}</span></p>
-                  <p>Vrsta: <br /><span>{this.props.pet.type}</span></p>
-                  <p>Leto rojstva: <br /><span>{this.props.pet.birth}</span></p>
-                </div>
-              </div>
-
-              <div className="profile-details">
-                <h2>Lastnik</h2>
-                {this.props.pet.ownerFullName && !this.state.editOwner ? (
-                  <div>
-                    <Link to={`/customers/${this.props.pet.owner}`}>{this.props.pet.ownerFullName}</Link>
-                    <button onClick={this.onEditOwner}>Spremeni</button>
-                  </div>
-                ) : (
-                    <div>
-                      <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                        getSuggestionValue={this.getSuggestionValue}
-                        renderSuggestion={this.renderSuggestion}
-                        onSuggestionSelected={this.onSuggestionSelected}
-                        highlightFirstSuggestion={true}
-                        inputProps={inputProps}
+      {
+        pet ? (
+          <div className={classes.root}>
+            <Grid container spacing={16}>
+              <Grid item xs={12} sm={3}>
+                <ProfilePageInfoAvatar
+                  favorite={pet.favorite}
+                  goBack={goBack}
+                  text={pet.name[0].toUpperCase()}
+                  abc={'A'}
+                />
+              </Grid>
+              <Grid item xs={12} sm={9}>
+                <Paper className={classes.paper}>
+                  <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                      <ProfilePageHeader
+                        editLink={`edit-pet/${pet.id}`}
+                        subtitle={pet.breed}
+                        title={pet.name}
                       />
-                      {
-                        this.state.value ?
-                          <button
-                            className="button"
-                            onClick={this.onSaveOwner}
-                          >
-                            Shrani
-                            </button>
-                          :
-                          undefined
-                      }
-                    </div>
-                  )}
-              </div>
-
-              <PetNotesList notes={this.props.pet.notes} id={this.props.pet.id} />
-
-            </div>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <PetsInfoTable pet={pet} />
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <NotesList
+                  module='pets'
+                  id={pet.id}
+                  notes={pet.notes}
+                />
+              </Grid>
+            </Grid>
           </div>
         ) : (
-            <div>Nalagam...</div>
-          )}
-      </div>
-    );
-  };
+            <Spinner />
+          )
+      }
+    </div>
+  );
 };
+
+PetProfilePage.propTypes = ({
+  classes: PropTypes.object.isRequired,
+});
 
 const mapStateToProps = (state, props) => ({
   pet: petSelector(state.pets, state.customers, props.match.params.id),
-  owners: ownerSelector(state.customers)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  startEditPet: (id, updates) => dispatch(startEditPet(id, updates))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PetProfilePage);
+export default
+  compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+  )(PetProfilePage);

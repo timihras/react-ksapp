@@ -87,10 +87,10 @@ class NoteAdd extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color="primary" tabindex="-1">
               Prekliči
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} variant="contained" color="primary">
               Dodaj
             </Button>
           </DialogActions>

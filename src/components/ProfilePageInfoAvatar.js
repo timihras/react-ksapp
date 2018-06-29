@@ -11,6 +11,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Checkbox } from '@material-ui/core';
+import ProfilePageABC from './ProfilePageABC';
 
 const styles = theme => ({
   profile: {
@@ -56,9 +57,7 @@ const ProfilePageInfoAvatar = (props) => {
         </Avatar>
       </div>
       <div>
-        <Button variant="outlined" color="primary" className={classes.button}>
-          VIP
-        </Button>
+        <ProfilePageABC abc='C' />
       </div>
     </div>
   );
@@ -69,3 +68,8 @@ ProfilePageInfoAvatar.propTypes = {
 }
 
 export default withStyles(styles)(ProfilePageInfoAvatar);
+
+
+// <Button variant="outlined" color="primary" className={classes.button}>
+// VIP
+// </Button>

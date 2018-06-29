@@ -95,7 +95,7 @@ class NotesList extends React.Component {
           />
         </div>
         <Paper className={classes.paper}>
-          <List>
+          <List dense>
             {
               notes && notes.length > 0 ? (
                 notes.map((note, i) => (

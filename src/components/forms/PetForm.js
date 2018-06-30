@@ -44,15 +44,12 @@ const renderTypeSelector = ({ input, meta: { touched, error }, ...custom }) => (
 
 class PetForm extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-    const { change } = this.props;
-    const values = nextProps.p ? nextProps.p : {};
-    if (values !== null) {
-      change('p.name', values.name);
-      change('p.type', values.type);
-      change('p.gender', values.gender);
-      change('p.birth', values.birth);
-      change('p.breed', values.breed);
+  componentDidMount() {
+    const { p } = this.props;
+    if (p) {
+      this.props.initialize({ p });
+    } else {
+      this.props.initialize({ p: {} });
     }
   }
 
@@ -101,7 +98,7 @@ class PetForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'dog-boarding',
+  form: 'boardingForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,

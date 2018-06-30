@@ -169,12 +169,12 @@ WizardMasterPage.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  values: getFormValues('dog-boarding')(state)
+  values: getFormValues('boardingForm')(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
   submitWizard: (formData) => dispatch(submitWizard(formData)),
-  reset: () => dispatch(reset('dog-boarding'))
+  reset: () => dispatch(reset('boardingForm'))
 })
 
 export default compose(

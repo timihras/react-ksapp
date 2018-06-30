@@ -127,7 +127,7 @@ const PetDetailsForm = (props) => {
 }
 
 export default reduxForm({
-  form: 'dog-boarding',
+  form: 'boardingForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate

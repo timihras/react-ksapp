@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFormValues, reset } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { startEditPet, startDeactivatePet } from '../../actions/pets';
 import { Button, Paper } from '@material-ui/core';
@@ -15,8 +15,9 @@ export class PetEditPage extends Component {
     e.preventDefault();
     const updates = this.props.values.p;
     const { goBack } = this.props.history;
-    this.props.startEditPet(this.props.pet.id, updates);
-    goBack();
+    return this.props.startEditPet(this.props.pet.id, updates).then(() => {
+      goBack();
+    });
   };
 
   onDialogSubmit = () => {
@@ -24,15 +25,15 @@ export class PetEditPage extends Component {
   };
 
   onDeactivate = () => {
-    this.props.startDeactivatePet(this.props.pet.id);
     const { goBack } = this.props.history;
-    goBack();
+    return this.props.startDeactivatePet(this.props.pet.id).then(() => {
+      goBack();
+    })
   };
 
   render() {
-    const { goBack } = this.props.history;
     const { pet } = this.props;
-    const p = this.props.pet;
+    const { goBack } = this.props.history;
     return (
       <div>
         {pet ? (
@@ -44,7 +45,7 @@ export class PetEditPage extends Component {
             />
             <Paper>
               <form className="form" onSubmit={this.onSubmit}>
-                <PetForm p={p} />
+                <PetForm p={pet} />
                 <div className="form__actions">
                   <AlertDialog
                     buttonName="Izbriši"
@@ -69,12 +70,12 @@ export class PetEditPage extends Component {
 
 const mapStateToProps = (state, props) => ({
   pet: state.pets.find(({ id }) => id === props.match.params.id),
-  values: getFormValues('dog-boarding')(state)
+  values: getFormValues('boardingForm')(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   startEditPet: (id, updates) => dispatch(startEditPet(id, updates)),
-  startDeactivatePet: (id) => dispatch(startDeactivatePet(id))
+  startDeactivatePet: (id) => dispatch(startDeactivatePet(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PetEditPage);

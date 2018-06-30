@@ -31,7 +31,7 @@ const mapStateToProps = (state, props) => ({
 const cSummaryPage = connect(mapStateToProps)(SummaryPage);
 
 export default reduxForm({
-  form: 'dog-boarding',
+  form: 'boardingForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(cSummaryPage);

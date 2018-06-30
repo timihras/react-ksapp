@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PetForm from './PetForm';
 import { startAddPet } from '../../actions/pets';
 
 export class PetAddPage extends Component {
@@ -18,7 +17,6 @@ export class PetAddPage extends Component {
           </div>
         </div>
         <div className="content-container">
-          <PetForm onSubmit={this.onSubmit} />
         </div>
       </div>
     );

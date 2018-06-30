@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
 import replaceValues from '../../utils/replaceValues';
+import ChangeOwnerDialog from './ChangeOwnerDialog';
 
 const PetsInfoTable = (props) => {
   const { pet } = props;
@@ -33,9 +34,12 @@ const PetsInfoTable = (props) => {
         <TableRow >
           <TableCell component="th" scope="row">Lastnik</TableCell>
           <TableCell>
-            <Link to={`/customers/${pet.owner}`}>
-              {pet.ownerFullName ? pet.ownerFullName : noData}
-            </Link>
+            <div className="info-table__actions">
+              <Link to={`/customers/${pet.owner}`}>
+                {pet.ownerFullName ? pet.ownerFullName : noData}
+              </Link>
+              <ChangeOwnerDialog pet={{ id: pet.id, name: pet.name }} owner={{ id: pet.owner, name: pet.ownerFullName }} />
+            </div>
           </TableCell>
         </TableRow>
       </TableBody>

@@ -16,12 +16,10 @@ class AlertDialog extends React.Component {
   };
 
   handleClose = () => {
-    console.log('Prekliči')
     this.setState({ open: false });
   };
 
   handleConfirm = () => {
-    console.log('Potrdi')
     this.setState({ open: false });
     this.props.onDialogSubmit();
   }

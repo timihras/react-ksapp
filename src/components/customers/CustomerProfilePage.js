@@ -39,7 +39,8 @@ const CustomerProfilePage = (props) => {
                   favorite={customer.favorite}
                   goBack={goBack}
                   text={customer.firstName[0].toUpperCase() + customer.lastName[0].toUpperCase()}
-                  abc={'A'}
+                  id={customer.id}
+                  abc={customer.abc}
                 />
               </Grid>
               <Grid item xs={12} sm={9}>

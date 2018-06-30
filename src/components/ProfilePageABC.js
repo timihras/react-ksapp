@@ -1,21 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import { startEditCustomer } from '../actions/customers';
+
 class ProfilePageABC extends React.Component {
   state = {
     anchorEl: null,
-    value: this.props.abc
+    abc: this.props.abc
   };
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (value) => {
-    if (value) {
-      this.setState({ value })
+  handleClose = (abc) => {
+    const { id } = this.props;
+    if (abc) {
+      this.setState({ abc })
+      this.props.startEditCustomer(id, { abc })
     }
     this.setState({ anchorEl: null });
   };
@@ -32,7 +38,7 @@ class ProfilePageABC extends React.Component {
   }
 
   render() {
-    const { anchorEl, value } = this.state;
+    const { anchorEl, abc } = this.state;
 
     return (
       <div>
@@ -43,7 +49,7 @@ class ProfilePageABC extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          {this.renderButtonName(value)}
+          {this.renderButtonName(abc)}
         </Button>
         <Menu
           id="simple-menu"
@@ -60,4 +66,8 @@ class ProfilePageABC extends React.Component {
   }
 }
 
-export default ProfilePageABC;
+const mapDispatchToProps = (dispatch) => ({
+  startEditCustomer: (id, updates) => dispatch(startEditCustomer(id, updates))
+})
+
+export default connect(undefined, mapDispatchToProps)(ProfilePageABC);

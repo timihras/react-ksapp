@@ -34,7 +34,7 @@ const styles = theme => ({
 });
 
 const ProfilePageInfoAvatar = (props) => {
-  const { abc, classes, favorite, goBack, text } = props;
+  const { id, abc, classes, favorite, goBack, text } = props;
 
   return (
     <div className={classes.profile}>
@@ -57,7 +57,7 @@ const ProfilePageInfoAvatar = (props) => {
         </Avatar>
       </div>
       <div>
-        <ProfilePageABC abc='C' />
+        <ProfilePageABC abc={abc} id={id} />
       </div>
     </div>
   );

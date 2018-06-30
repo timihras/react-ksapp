@@ -163,25 +163,27 @@ class PetTable extends React.Component {
                   </TableHead>
                   <TableBody>
                     {
-                      pets.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
-                        return (<TableRow key={n.id}>
-                          <TableCell component="th" scope="row" className={classes.info}>
-                            {n.type ? (
-                              <Avatar src={`/images/svg/${n.type}.svg`} className={classes.avatar} />
-                            ) : ('')}
-                            <Link to={`/pets/${n.id}`} className={classes.link}>{n.name}</Link>
-                          </TableCell>
-                          <TableCell>{n.breed}</TableCell>
-                          <TableCell>{n.birth}</TableCell>
-                          <TableCell>{n.gender ?
-                            (<img src={`/images/svg/${n.gender}.svg`} className={classes.gender} />) : (
-                              ''
-                            )}</TableCell>
-                          <TableCell>{n.notes && <SpeakerNotes />}</TableCell>
-                          <TableCell><MoreVertIcon /></TableCell>
-                        </TableRow>
-                        );
-                      })
+                      pets
+                        .sort((a, b) => (b.name > a.name ? -1 : 1))
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
+                          return (<TableRow key={n.id}>
+                            <TableCell component="th" scope="row" className={classes.info}>
+                              {n.type ? (
+                                <Avatar src={`/images/svg/${n.type}.svg`} className={classes.avatar} />
+                              ) : ('')}
+                              <Link to={`/pets/${n.id}`} className={classes.link}>{n.name}</Link>
+                            </TableCell>
+                            <TableCell>{n.breed}</TableCell>
+                            <TableCell>{n.birth}</TableCell>
+                            <TableCell>{n.gender ?
+                              (<img src={`/images/svg/${n.gender}.svg`} className={classes.gender} />) : (
+                                ''
+                              )}</TableCell>
+                            <TableCell>{n.notes && <SpeakerNotes />}</TableCell>
+                            <TableCell><MoreVertIcon /></TableCell>
+                          </TableRow>
+                          );
+                        })
                     }
                     {
                       emptyRows > 0 && (

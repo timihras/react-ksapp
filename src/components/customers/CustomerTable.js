@@ -160,29 +160,31 @@ class CustomerTable extends React.Component {
                   </TableHead>
                   <TableBody>
                     {
-                      customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(customer => {
-                        return (
-                          <TableRow key={customer.id}>
-                            <TableCell component="th" scope="row" className={classes.info}>
-                              <Avatar className={classes.avatar}>
-                                {customer.firstName[0].toUpperCase() + customer.lastName[0].toUpperCase()}
-                              </Avatar>
-                              <Link to={`/customers/${customer.id}`} className={classes.link}>
-                                {customer.firstName} {customer.lastName}
-                              </Link>
-                            </TableCell>
-                            <TableCell>
-                              <div>{customer.address}</div>
-                              <div>{customer.post} {customer.city}</div>
-                            </TableCell>
-                            <TableCell>{customer.phoneNumber}</TableCell>
-                            <TableCell>{customer.email}</TableCell>
-                            <TableCell></TableCell>
-                            <TableCell>{customer.notes && <SpeakerNotes />}</TableCell>
-                            <TableCell><MoreVertIcon /></TableCell>
-                          </TableRow>
-                        );
-                      })
+                      customers
+                        .sort((a, b) => (b.lastName > a.lastName ? -1 : 1))
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(customer => {
+                          return (
+                            <TableRow key={customer.id}>
+                              <TableCell component="th" scope="row" className={classes.info}>
+                                <Avatar className={classes.avatar}>
+                                  {customer.firstName[0].toUpperCase() + customer.lastName[0].toUpperCase()}
+                                </Avatar>
+                                <Link to={`/customers/${customer.id}`} className={classes.link}>
+                                  {customer.firstName} {customer.lastName}
+                                </Link>
+                              </TableCell>
+                              <TableCell>
+                                <div>{customer.address}</div>
+                                <div>{customer.post} {customer.city}</div>
+                              </TableCell>
+                              <TableCell>{customer.phoneNumber}</TableCell>
+                              <TableCell>{customer.email}</TableCell>
+                              <TableCell></TableCell>
+                              <TableCell>{customer.notes && <SpeakerNotes />}</TableCell>
+                              <TableCell><MoreVertIcon /></TableCell>
+                            </TableRow>
+                          );
+                        })
                     }
                     {
                       emptyRows > 0 && (

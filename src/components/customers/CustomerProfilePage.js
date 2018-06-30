@@ -47,7 +47,7 @@ const CustomerProfilePage = (props) => {
                   <Grid container spacing={24}>
                     <Grid item xs={12}>
                       <ProfilePageHeader
-                        editLink={`edit-customer/${customer.id}`}
+                        editLink={`/edit-customer/${customer.id}`}
                         subtitle={customer.email}
                         title={`${customer.firstName} ${customer.lastName}`}
                       />

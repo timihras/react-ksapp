@@ -1,29 +1,68 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CustomerForm from './CustomerForm'
+import { getFormValues } from 'redux-form';
+
 import { startEditCustomer, startDeactivateCustomer } from '../../actions/customers';
+import { Paper, Button } from '@material-ui/core';
+
+import CustomerForm from '../forms/CustomerForm';
+import PageHeader from '../common/PageHeader';
+import AlertDialog from '../common/AlertDialog';
+import Spinner from '../common/Spinner';
 
 export class CustomerEditPage extends React.Component {
-  onSubmit = (customer) => {
-    this.props.startEditCustomer(this.props.customer.id, customer);
-    this.props.history.push('/customers');
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, address, post, city, email, phoneNumber } = this.props.values.c;
+    const updates = { firstName, lastName, address, post, city, email, phoneNumber }
+    const { goBack } = this.props.history;
+    return this.props.startEditCustomer(this.props.customer.id, updates).then(() => {
+      goBack();
+    });
   };
-  onDisable = () => {
-    this.props.startDeactivateCustomer(this.props.customer.id);
-    this.props.history.push('/customers');
+
+  onDialogSubmit = () => {
+    this.onDeactivate();
+  };
+
+  onDeactivate = () => {
+    const { goBack } = this.props.history;
+    return this.props.startDeactivateCustomer(this.props.customer.id).then(() => {
+      goBack();
+    });
   };
   render() {
+    const { customer } = this.props;
+    const { goBack } = this.props.history;
     return (
       <div>
-        <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Uredi stranko</h1>
+        {customer ? (
+          <div>
+            <PageHeader
+              subtitle="podatke za lastnika hišnega ljubljenčka"
+              title="Uredi"
+              goBack={goBack}
+            />
+            <Paper>
+              <form className="form" onSubmit={this.onSubmit}>
+                <CustomerForm c={customer} />
+                <div className="form__actions">
+                  <AlertDialog
+                    buttonName="Izbriši"
+                    dialogText="Ali si prepričan/a da želiš izbrisati zapis?"
+                    onDialogSubmit={this.onDialogSubmit}
+                  />
+                  <Button type="submit" onClick={this.onSubmit} variant="contained" color="primary">
+                    Uredi
+                  </Button>
+                </div>
+              </form>
+            </Paper>
           </div>
-        </div>
-        <div className="content-container">
-          <CustomerForm customer={this.props.customer} onSubmit={this.onSubmit} />
-          <button className="button button--secondary" onClick={this.onDisable}>Odstrani</button>
-        </div>
+        ) : (
+            <Spinner />
+          )
+        }
       </div>
 
     );
@@ -31,7 +70,8 @@ export class CustomerEditPage extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
-  customer: state.customers.find((customer) => customer.id === props.match.params.id)
+  customer: state.customers.find((customer) => customer.id === props.match.params.id),
+  values: getFormValues('boardingForm')(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

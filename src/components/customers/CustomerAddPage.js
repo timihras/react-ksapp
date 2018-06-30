@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startAddCustomer } from '../../actions/customers';
-import CustomerForm from './CustomerForm';
 
 export class CustomerAddPage extends React.Component {
   onSubmit = (customer) => {
@@ -17,7 +16,6 @@ export class CustomerAddPage extends React.Component {
           </div>
         </div>
         <div className="content-container">
-          <CustomerForm onSubmit={this.onSubmit} />
         </div>
       </div>
     );

@@ -13,7 +13,8 @@ import Spinner from '../common/Spinner';
 export class PetEditPage extends Component {
   onSubmit = (e) => {
     e.preventDefault();
-    const updates = this.props.values.p;
+    const { name, breed, gender, birth, type } = this.props.values.p;
+    const updates = { name, breed, gender, birth, type };
     const { goBack } = this.props.history;
     return this.props.startEditPet(this.props.pet.id, updates).then(() => {
       goBack();
@@ -28,7 +29,7 @@ export class PetEditPage extends Component {
     const { goBack } = this.props.history;
     return this.props.startDeactivatePet(this.props.pet.id).then(() => {
       goBack();
-    })
+    });
   };
 
   render() {
@@ -70,7 +71,7 @@ export class PetEditPage extends Component {
 
 const mapStateToProps = (state, props) => ({
   pet: state.pets.find(({ id }) => id === props.match.params.id),
-  values: getFormValues('boardingForm')(state)
+  values: getFormValues('boardingForm')(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -24,6 +24,7 @@ import red from '@material-ui/core/colors/red';
 
 import selectPets from '../../selectors/pets';
 import VertMenu from '../VertMenu';
+import { Badge } from '@material-ui/core';
 
 const actionsStyles = theme => ({
   root: {
@@ -179,7 +180,14 @@ class PetTable extends React.Component {
                               (<img src={`/images/svg/${pet.gender}.svg`} className={classes.gender} />) : (
                                 ''
                               )}</TableCell>
-                            <TableCell>{pet.notes && <SpeakerNotes />}</TableCell>
+                            <TableCell>
+                              {
+                                pet.notes && pet.notes.length > 0 &&
+                                <Badge badgeContent={pet.notes.length} color="secondary">
+                                  <SpeakerNotes />
+                                </Badge>
+                              }
+                            </TableCell>
                             <TableCell>
                               <VertMenu
                                 menuItems={[

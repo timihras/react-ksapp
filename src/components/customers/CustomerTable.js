@@ -24,6 +24,7 @@ import SpeakerNotes from '@material-ui/icons/SpeakerNotes';
 import red from '@material-ui/core/colors/red';
 
 import selectCustomers from '../../selectors/customers';
+import { Badge } from '@material-ui/core';
 
 const actionsStyles = theme => ({
   root: {
@@ -112,7 +113,7 @@ const styles = theme => ({
   },
   link: {
     color: theme.palette.text.primary,
-  }
+  },
 });
 
 class CustomerTable extends React.Component {
@@ -180,7 +181,14 @@ class CustomerTable extends React.Component {
                               <TableCell>{customer.phoneNumber}</TableCell>
                               <TableCell>{customer.email}</TableCell>
                               <TableCell></TableCell>
-                              <TableCell>{customer.notes && <SpeakerNotes />}</TableCell>
+                              <TableCell>
+                                {
+                                  customer.notes && customer.notes.length > 0 &&
+                                  <Badge badgeContent={customer.notes.length} color="secondary">
+                                    <SpeakerNotes />
+                                  </Badge>
+                                }
+                              </TableCell>
                               <TableCell><MoreVertIcon /></TableCell>
                             </TableRow>
                           );

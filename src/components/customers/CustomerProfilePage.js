@@ -9,7 +9,7 @@ import Spinner from '../common/Spinner';
 
 import NotesList from '../NotesList';
 import ProfilePageHeader from '../ProfilePageHeader';
-import ProfilePageInfoAvatar from '../ProfilePageInfoAvatar';
+import CustomerProfilePageInfoAvatar from './CustomerProfilePageInfoAvatar';
 import CustomerInfoTable from './CustomerInfoTable';
 import CustomerPetsList from './CustomerPetsList';
 
@@ -35,7 +35,7 @@ const CustomerProfilePage = (props) => {
           <div className={classes.root}>
             <Grid container spacing={24}>
               <Grid item xs={12} sm={3}>
-                <ProfilePageInfoAvatar
+                <CustomerProfilePageInfoAvatar
                   favorite={customer.favorite}
                   goBack={goBack}
                   text={customer.firstName[0].toUpperCase() + customer.lastName[0].toUpperCase()}

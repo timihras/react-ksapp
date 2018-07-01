@@ -1,11 +1,11 @@
 
 export default (keyValue) => {
   const values = [
-    'dog', 'cat', 'other', 'male', 'female',
+    'dog', 'cat', 'other', 'male', 'female', 'Yes', 'No', 'Maybe'
   ];
 
   const names = [
-    'Pes', 'Mačka', 'Ostalo', 'Samec', 'Samica',
+    'Pes', 'Mačka', 'Ostalo', 'Samec', 'Samica', 'Da', 'Ne', 'Morda'
   ];
 
   const index = values.findIndex((key) => key === keyValue);

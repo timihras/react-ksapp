@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -11,7 +10,6 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Checkbox } from '@material-ui/core';
-import ProfilePageABC from './ProfilePageABC';
 
 const styles = theme => ({
   profile: {
@@ -19,7 +17,8 @@ const styles = theme => ({
     flexDirection: 'column',
     textAlign: 'center',
     justifyContent: 'space-between',
-    minHeight: 350,
+    minHeight: 525,
+    height: '100%',
   },
   toolbar: {
     display: 'flex',
@@ -34,7 +33,7 @@ const styles = theme => ({
 });
 
 const ProfilePageInfoAvatar = (props) => {
-  const { id, abc, classes, favorite, goBack, text } = props;
+  const { classes, favorite, goBack, text } = props;
 
   return (
     <div className={classes.profile}>
@@ -57,7 +56,6 @@ const ProfilePageInfoAvatar = (props) => {
         </Avatar>
       </div>
       <div>
-        <ProfilePageABC abc={abc} id={id} />
       </div>
     </div>
   );

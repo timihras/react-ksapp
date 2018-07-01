@@ -10,8 +10,9 @@ import Spinner from '../common/Spinner';
 
 import NotesList from '../NotesList';
 import ProfilePageHeader from '../ProfilePageHeader';
-import ProfilePageInfoAvatar from '../ProfilePageInfoAvatar';
+import PetsProfilePageInfoAvatar from './PetsProfilePageInfoAvatar';
 import PetsInfoTable from './PetsInfoTable';
+import PetsInfoTabs from './PetsInfoTabs';
 
 const styles = theme => ({
   root: {
@@ -20,6 +21,7 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
+    height: '100%',
   }
 });
 
@@ -35,11 +37,11 @@ const PetProfilePage = (props) => {
           <div className={classes.root}>
             <Grid container spacing={24}>
               <Grid item xs={12} sm={3}>
-                <ProfilePageInfoAvatar
+                <PetsProfilePageInfoAvatar
                   favorite={pet.favorite}
                   goBack={goBack}
                   text={pet.name[0].toUpperCase()}
-                  abc={'A'}
+                  guardian={pet.guardian}
                 />
               </Grid>
               <Grid item xs={12} sm={9}>
@@ -52,8 +54,8 @@ const PetProfilePage = (props) => {
                         title={pet.name}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <PetsInfoTable pet={pet} />
+                    <Grid item xs={12}>
+                      <PetsInfoTabs pet={pet} />
                     </Grid>
                   </Grid>
                 </Paper>

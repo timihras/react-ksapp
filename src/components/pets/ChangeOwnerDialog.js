@@ -27,7 +27,6 @@ class ChangeOwnerDialog extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false });
-    console.log('Prekliči');
   };
 
   handleSubmit = () => {

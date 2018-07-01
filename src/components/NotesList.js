@@ -7,7 +7,6 @@ import moment from 'moment';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -84,7 +83,6 @@ class NotesList extends React.Component {
     const { notes, module, classes } = this.props;
     return (
       <div className={classes.root}>
-        <Divider className={classes.divider} />
         <div className={classes.flex}>
           <Typography variant="subheading">
             Opombe za {module === 'pets' ? 'hišnega ljubljenčka' : 'stranko'}

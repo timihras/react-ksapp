@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 
@@ -27,7 +25,7 @@ const styles = theme => ({
   },
 });
 
-function FolderList(props) {
+const CustomerPetsList = (props) => {
   const { classes, pets } = props;
   return (
     <div className={classes.root}>
@@ -53,8 +51,8 @@ function FolderList(props) {
   );
 }
 
-FolderList.propTypes = {
+CustomerPetsList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FolderList);
+export default withStyles(styles)(CustomerPetsList);

@@ -19,11 +19,11 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SpeakerNotes from '@material-ui/icons/SpeakerNotes';
 import red from '@material-ui/core/colors/red';
 
 import selectPets from '../../selectors/pets';
+import VertMenu from '../VertMenu';
 
 const actionsStyles = theme => ({
   root: {
@@ -165,22 +165,28 @@ class PetTable extends React.Component {
                     {
                       pets
                         .sort((a, b) => (b.name > a.name ? -1 : 1))
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
-                          return (<TableRow key={n.id}>
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(pet => {
+                          return (<TableRow key={pet.id}>
                             <TableCell component="th" scope="row" className={classes.info}>
-                              {n.type ? (
-                                <Avatar src={`/images/svg/${n.type}.svg`} className={classes.avatar} />
+                              {pet.type ? (
+                                <Avatar src={`/images/svg/${pet.type}.svg`} className={classes.avatar} />
                               ) : ('')}
-                              <Link to={`/pets/${n.id}`} className={classes.link}>{n.name}</Link>
+                              <Link to={`/pets/${pet.id}`} className={classes.link}>{pet.name}</Link>
                             </TableCell>
-                            <TableCell>{n.breed}</TableCell>
-                            <TableCell>{n.birth}</TableCell>
-                            <TableCell>{n.gender ?
-                              (<img src={`/images/svg/${n.gender}.svg`} className={classes.gender} />) : (
+                            <TableCell>{pet.breed}</TableCell>
+                            <TableCell>{pet.birth}</TableCell>
+                            <TableCell>{pet.gender ?
+                              (<img src={`/images/svg/${pet.gender}.svg`} className={classes.gender} />) : (
                                 ''
                               )}</TableCell>
-                            <TableCell>{n.notes && <SpeakerNotes />}</TableCell>
-                            <TableCell><MoreVertIcon /></TableCell>
+                            <TableCell>{pet.notes && <SpeakerNotes />}</TableCell>
+                            <TableCell>
+                              <VertMenu
+                                menuItems={[
+                                  { title: 'Podrobnosti', url: `/pets/${pet.id}` },
+                                  { title: 'Uredi', url: `/edit-pet/${pet.id}` },
+                                ]} />
+                            </TableCell>
                           </TableRow>
                           );
                         })

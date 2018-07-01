@@ -19,12 +19,12 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SpeakerNotes from '@material-ui/icons/SpeakerNotes';
 import red from '@material-ui/core/colors/red';
 
 import selectCustomers from '../../selectors/customers';
 import { Badge } from '@material-ui/core';
+import VertMenu from '../VertMenu';
 
 const actionsStyles = theme => ({
   root: {
@@ -189,7 +189,13 @@ class CustomerTable extends React.Component {
                                   </Badge>
                                 }
                               </TableCell>
-                              <TableCell><MoreVertIcon /></TableCell>
+                              <TableCell>
+                                <VertMenu
+                                  menuItems={[
+                                    { title: 'Podrobnosti', url: `/customers/${customer.id}` },
+                                    { title: 'Uredi', url: `/edit-customer/${customer.id}` },
+                                  ]} />
+                              </TableCell>
                             </TableRow>
                           );
                         })

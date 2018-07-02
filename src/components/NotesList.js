@@ -22,21 +22,19 @@ const styles = theme => ({
     width: '100%',
   },
   paper: {
-    margin: theme.spacing.unit * 2,
+    margin: `${theme.spacing.unit * 2}px 0`,
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
   },
   leftIcon: {
     marginRight: theme.spacing.unit,
   },
-  divider: {
-    margin: '2rem',
-  },
   flex: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '0 2rem'
+    marginLeft: theme.spacing.unit,
+    // margin: '0 2rem'
   },
 });
 

@@ -26,11 +26,9 @@ const styles = theme => ({
 });
 
 const Guardian = (props) => {
-  const { classes, guardian } = props;
-  if (guardian) {
-    const fullName = `${guardian.firstName} ${guardian.lastName}`;
-    const contact = guardian.phoneNumber + (guardian.email && ` ${guardian.email}`)
-  }
+  const { classes, guardian = {} } = props;
+  const fullName = !guardian.firstName && !guardian.lastName ? undefined : `${guardian.firstName} ${guardian.lastName}`;
+  const contact = !guardian.phoneNumber && !guardian.email ? undefined : `${guardian.phoneNumber}  ${guardian.email}`;
   return (
     <div className={classes.root}>
       <Typography variant="subheading">
@@ -38,10 +36,10 @@ const Guardian = (props) => {
       </Typography>
       <List>
         {
-          guardian ? (
+          fullName && contact ? (
             <ListItem key={guardian.phoneNumber}>
               <Avatar className={classes.avatar}><PriorityHighIcon /></Avatar>
-              <ListItemText primary={contact} secondary={fullName} />
+              <ListItemText primary={contact.trim()} secondary={fullName.trim()} />
             </ListItem>
           ) : (
               <ListItem>

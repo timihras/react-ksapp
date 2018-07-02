@@ -16,7 +16,8 @@ const styles = theme => ({
     margin: '1rem'
   },
   leftIcon: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit / 2,
+    width: '0.7em',
   },
 })
 
@@ -34,10 +35,10 @@ const ProfilePageHeader = (props) => {
           </Typography>
         </div>
         <div>
-          <Button component={Link} to={editLink} color="primary">
+          <Button component={Link} to={editLink} color="primary" size="small" >
             <EditIcon className={classes.leftIcon} />
             Uredi
-      </Button>
+          </Button>
         </div>
       </div>
       <Divider />

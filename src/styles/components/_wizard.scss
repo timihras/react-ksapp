@@ -19,7 +19,7 @@
   transition: all 0.3s ease-in-out;
   &:hover {
     background: darken($off-white, 5%);
-    color: $accent;
+    color: $accent-secondary;
   }
 }
 
@@ -44,8 +44,8 @@
 }
 
 .wizard-dialog__icon-wrapper:hover {
-  color: $accent;
-  border-color: $accent;
+  color: $accent-secondary;
+  border-color: $accent-secondary;
 }
 
 .wizard-dialog__header {
@@ -72,9 +72,9 @@
 
 .wizard__summary-item p {
   font-size: 1.1rem !important;
-  color: $original !important;
+  color: $text-primary !important;
 }
 
 .wizard__summary-item span {
-  color: $grey !important;
+  color: $text-secondary !important;
 }

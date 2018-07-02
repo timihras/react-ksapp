@@ -1,61 +1,61 @@
 .button {
-    background: none;
-    border: 2px solid $grey;
-    border-radius: 100px;
-    color: $dark-grey;
-    display: inline-block;
-    font-size: $font-size-small;
-    font-weight: 400;
-    line-height: 1;
-    padding: $s-size;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    i {
-        margin: 0 $s-size 0 0;
-    }
+  background: none;
+  border: 2px solid $text-secondary;
+  border-radius: 100px;
+  color: $dark-grey;
+  display: inline-block;
+  font-size: $font-size-small;
+  font-weight: 400;
+  line-height: 1;
+  padding: $s-size;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  i {
+    margin: 0 $s-size 0 0;
+  }
 }
 
 .button--link {
-    background: none;
+  background: none;
 }
 
 .button__nav {
-    display: block;
-    margin: $l-size $m-size;
+  display: block;
+  margin: $l-size $m-size;
 }
 
 .button__primary {
-    display: block;
-    margin: $m-size auto;
-    padding: $s-size $l-size;
-    text-align: center;
+  display: block;
+  margin: $m-size auto;
+  padding: $s-size $l-size;
+  text-align: center;
 }
 
 .button__primary:hover {
-    background: $accent;
-    border-color: $accent;
-    color: $white;
+  background: $accent-secondary;
+  border-color: $accent-secondary;
+  color: $white;
 }
 
 .button__nav--link {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: $font-size-large;
-    i {
-        margin: 0 $s-size;
-    }
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: $font-size-large;
+  i {
+    margin: 0 $s-size;
+  }
 }
 
 .button--dark-link {
-    background: none;
-    color: $dark-grey;
+  background: none;
+  color: $dark-grey;
 }
 
 .button--secondary {
-    border: none;
+  border: none;
 }
 
 button:disabled {
-    color: $grey;
+  color: $text-secondary;
 }

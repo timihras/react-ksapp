@@ -9,15 +9,12 @@
   margin: 3rem auto 2rem;
 }
 
-// .nav-active {
-//   border-left: 20px solid $accent;
-// }
 .nav-active * {
-  color: $accent !important;
+  color: $accent-secondary !important;
 }
 
 .link-disabled {
-  color: $grey !important;
+  color: $text-secondary !important;
   cursor: default;
   pointer-events: none;
 }

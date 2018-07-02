@@ -2,13 +2,18 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: $text-primary;
+}
+
 a {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
 a:hover {
-  color: $accent;
+  color: $accent-secondary;
 }
 
 // html {
@@ -21,32 +26,4 @@ a:hover {
 //     font-weight: 400;
 //     font-size: $s-size;
 //     line-height: 1.6;
-// }
-// main {
-//     min-height: 100vh;
-//     height: auto;
-// }
-// h1 {
-//     font-size: 3rem;
-//     font-weight: 400;
-// }
-// .link {
-//     cursor: pointer;
-// }
-// .link-disabled {
-//     color: $grey !important;
-//     cursor: default;
-//     pointer-events: none;
-// }
-// .hide {
-//     display: none !important;
-// }
-// button {
-//     cursor: pointer;
-// }
-// button:disabled {
-//     cursor: default;
-// }
-// .is-active {
-//     font-weight: 600;
 // }

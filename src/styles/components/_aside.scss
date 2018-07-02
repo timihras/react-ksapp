@@ -1,77 +1,77 @@
 aside {
-    background-color: $white;
-    left: 0;
-    height: 100%;
-    overflow-x: hidden;
-    padding-top: $l-size;
-    position: fixed;
-    top: 0;
-    transition: 0.5s;
-    width: 0;
-    z-index: 1;
+  background-color: $white;
+  left: 0;
+  height: 100%;
+  overflow-x: hidden;
+  padding-top: $l-size;
+  position: fixed;
+  top: 0;
+  transition: 0.5s;
+  width: 0;
+  z-index: 1;
 }
 
 .aside__action {
-    margin: $xl-size 0;
+  margin: $xl-size 0;
 }
 
 .aside__avatar {
-    display: block;
-    border: 1px solid $off-white;
-    border-radius: 50%;
-    margin: $xl-size auto 0 auto;
-    width: $xxl-size;
+  display: block;
+  border: 1px solid $off-white;
+  border-radius: 50%;
+  margin: $xl-size auto 0 auto;
+  width: $xxl-size;
 }
 
 .aside__logo {
-    width: 100%;
-    padding: 0 $xl-size;
+  width: 100%;
+  padding: 0 $xl-size;
 }
 
 .aside__nav {
-    width: 24rem;
-    margin: auto;
-    i {
-        margin: 0 $s-size;
-    }
-    &>a {
-        display: block;
-        font-size: $font-size-large;
-        text-decoration: none;
-        color: $dark-grey;
-        margin: $xs-size;
-        padding: $s-size;
-    }
+  width: 24rem;
+  margin: auto;
+  i {
+    margin: 0 $s-size;
+  }
+  &>a {
+    display: block;
+    font-size: $font-size-large;
+    text-decoration: none;
+    color: $dark-grey;
+    margin: $xs-size;
+    padding: $s-size;
+  }
 }
 
 .nav-active {
-    background: $accent;
-    border-radius: 10px;
-    color: $white !important;
+  background: $accent-secondary;
+  border-radius: 10px;
+  color: $white !important;
 }
 
 .aside__username {
-    text-align: center;
-    margin: $s-size 0 $xl-size 0;
-    font-size: $font-size-large;
-    font-weight: 600;
+  text-align: center;
+  margin: $s-size 0 $xl-size 0;
+  font-size: $font-size-large;
+  font-weight: 600;
 }
 
 main {
-    transition: margin-left .5s;
-    padding: $l-size;
+  transition: margin-left .5s;
+  padding: $l-size;
 }
 
 .sidenav--open aside {
-    width: 25rem;
+  width: 25rem;
 }
 
 .sidenav--open main {
-    margin-left: 25rem;
+  margin-left: 25rem;
 }
 
 .sidenav__toggle {
-    position: absolute;
-    z-index: 100;
-    padding: 1rem;
+  position: absolute;
+  z-index: 100;
+  padding: 1rem;
 }

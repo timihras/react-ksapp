@@ -32,7 +32,7 @@ export const mainSideMenu = (
       </ListItemIcon>
       <ListItemText primary="Lastniki ljubljenčkov" />
     </ListItem>
-    <ListItem button component={NavLink} to="#" activeClassName='nav-active' className="link-disabled">
+    <ListItem button component={NavLink} to="/events" activeClassName='nav-active'>
       <ListItemIcon>
         <EventNoteIcon />
       </ListItemIcon>

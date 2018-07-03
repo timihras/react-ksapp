@@ -1,0 +1,43 @@
+.rbc-toolbar-label,
+.rbc-btn-group>button,
+.rbc-overlay-header {
+  text-transform: uppercase;
+  font-size: $font-size-small;
+}
+
+.rbc-btn-group>button {
+  cursor: pointer;
+}
+
+.rbc-header,
+.rbc-overlay-header {
+  text-align: left;
+  padding-bottom: 0.3rem;
+  padding-top: 0.2rem;
+}
+
+.rbc-toolbar {
+  margin-bottom: 1rem;
+}
+
+.rbc-show-more {
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 400;
+  padding: 0.2rem 0.5rem;
+}
+
+.rbc-event {
+  border: 0px;
+  border-radius: 0px;
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.rbc-event-content {
+  font-size: 0.9rem;
+  padding-bottom: 0.1rem;
+}

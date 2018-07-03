@@ -120,7 +120,7 @@ class WizardMasterPage extends React.Component {
                           className={classes.button}
                           tabIndex="-1"
                         >
-                          Back
+                          Nazaj
                         </Button>
                         {activeStep === steps.length - 1 ?
                           (
@@ -130,7 +130,7 @@ class WizardMasterPage extends React.Component {
                               onClick={this.handleSubmit}
                               className={classes.button}
                             >
-                              Finish
+                              Potrdi
                             </Button>
                           ) : (
                             <Button
@@ -139,7 +139,7 @@ class WizardMasterPage extends React.Component {
                               onClick={this.handleNext}
                               className={classes.button}
                             >
-                              Next
+                              Naprej
                             </Button>
                           )
                         }

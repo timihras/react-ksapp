@@ -11,8 +11,8 @@ import Spinner from '../common/Spinner';
 import NotesList from '../NotesList';
 import ProfilePageHeader from '../ProfilePageHeader';
 import PetsProfilePageInfoAvatar from './PetsProfilePageInfoAvatar';
-import PetsInfoTable from './PetsInfoTable';
 import PetsInfoTabs from './PetsInfoTabs';
+
 
 const styles = theme => ({
   root: {

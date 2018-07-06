@@ -21,6 +21,7 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
+    height: '100%',
   },
 });
 
@@ -62,11 +63,13 @@ const CustomerProfilePage = (props) => {
                   </Grid>
                 </Paper>
               </Grid>
-              <NotesList
-                module='customers'
-                id={customer.id}
-                notes={customer.notes}
-              />
+              <Grid item xs={12}>
+                <NotesList
+                  module='customers'
+                  id={customer.id}
+                  notes={customer.notes}
+                />
+              </Grid>
             </Grid>
           </div>
         ) : (
